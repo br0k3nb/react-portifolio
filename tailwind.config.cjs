@@ -14,9 +14,16 @@ module.exports = {
     },
     extend: {
       animation: {
-        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'spin-slow': 'spin 10s linear infinite',
+        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 6s linear infinite',
         'custom-spin': 'spin 8s cubic-bezier(0.5, 0.5, 0.5, 0.5) infinite',
+          bounce: 'bounce 0.5s alternate cubic-bezier(0.95, 0.05, 0.795, 0.035) infinite',
+      },
+      keyframes: {
+        bounce: {
+          from: { transform: "translateY(10px)" },
+          to: { transform: "translateY(0px)" }
+        }
       },
     },
   },

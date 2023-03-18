@@ -3,11 +3,9 @@ import { Link } from 'react-scroll';
 import { HiArrowDown } from "react-icons/hi"
 import { motion } from 'framer-motion';
 
-import me from '../assets/me3.jpg';
+import me from '../assets/me2.jpg';
 
-type Props = {}
-
-export default function Hero({ }: Props) {
+export default function Hero() {
     
     const [text, count] = useTypewriter({
         words: [
@@ -19,25 +17,23 @@ export default function Hero({ }: Props) {
         delaySpeed: 1500,
     });
 
-
     return (
         <div>
-            <div className="relative flex flex-col text-center items-center justify-center my-10 py-16 sm:py-32 lg:flex-row sm:flex-col md:py-48 md:flex-col md:space-x-5 md:text-left">
+            <div className="relative flex flex-col text-center items-center justify-center my-10 py-16 sm:py-32 lg:flex-row sm:flex-col md:py-48 md:flex-col md:space-x-10 md:text-left">
                 <motion.div 
                     initial={{ x: -200, opacity: 0}}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2 }}
-                    className="md:mt-2 md:px-0"
+                    className="md:mt-2 md:px-10"
                 >
-                    <div className="absolute rounded-full object-cover shadow-2xl shadow-slate-400 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-52 xxs:w-52 animate-pulse">
-                        
-                    </div>
+                    <div className="absolute rounded-full object-cover shadow-2xl shadow-slate-400 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
+                    
                     <img
                         src={me}
                         alt="Profile picture"
                         width={250}
                         height={200}
-                        className="rounded-full object-scale-do md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-52 xxs:w-52"
+                        className="rounded-full object-cover md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48"
                     />
                 
                 </motion.div>
@@ -45,7 +41,7 @@ export default function Hero({ }: Props) {
                     initial={{ x: 600, opacity: 0}}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2 }}
-                    className="md:mt-2 md:w-3/5 md:pr-0 sm:p-5 xxs:p-5"
+                    className="md:mt-2 md:w-4/5 lg:w-3/5 md:pr-0 sm:p-5 xxs:p-5 xxs:text-center"
                 >
                     <h1 className="text-4xl font-bold mt-6 md:mt-2 md:text-6xl">
                         <span className='mr-3'>{text}</span>
@@ -59,20 +55,23 @@ export default function Hero({ }: Props) {
                         based in Brazil. Working towards creating software that
                         makes life easier and more meaningful.
                     </p>
-                    <Link
-                        to="projects"
-                        className="text-neutral-100 font-semibold px-6 py-3 bg-teal-600 rounded shadow hover:bg-teal-700"
-                        activeClass="active"
-                        spy={true}
-                        smooth={true}
-                        offset={-100}
-                        duration={500}
-                    >
-                        Projects
-                    </Link>
+                    <div className="flex justify-center lg:justify-start">
+                        <Link
+                            to="projects"
+                            className="text-neutral-100 uppercase text-sm hover:-translate-y-0 hover:scale-110 transition-all ease-in-out delay-150 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:bg-teal-600 duration-300"
+                            activeClass="active"
+                            spy={true}
+                            smooth={true}
+                            offset={-100}
+                            duration={500}
+                        >
+                            Projects
+                        </Link>
+                    </div>
+                    
                 </motion.div>
             </div>
-            <div className="flex flex-row items-center text-center justify-center ">
+            <div className="flex flex-row items-center text-center justify-center pb-10">
                 <Link
                     to="about"
                     activeClass="active"

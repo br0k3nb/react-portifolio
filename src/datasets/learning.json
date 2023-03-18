@@ -1,0 +1,46 @@
+[
+  {
+    "skill": "dart",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+  },
+  {
+    "skill": "flutter",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+  },
+  {
+    "skill": "php",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+  },
+  {
+    "skill": "laravel",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg"
+  },
+  {
+    "skill": "nestjs",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg"
+  },
+  {
+    "skill": "threejs",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg"
+  },
+  {
+    "skill": "java",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+  },
+  {
+    "skill": "spring",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+  },
+  {
+    "skill": "c#",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+  },
+  {
+    "skill": ".net",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+  },
+  {
+    "skill": "python",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+  }
+]

@@ -13,12 +13,17 @@
       border-stone-800
       rounded-full
       uppercase
-      text-xs
+      text-[12.5px]
       tracking-widest
       text-gray-100
       transition-all
-      hover:border-[#fafafa]/20 
-      hover:text-[#fafafa]/40
+      ease-in-out 
+      delay-75
+      hover:scale-105
+      hover:hover:text-[#fafafa] 
+      hover:border-[#fafafa]/40 
+      duration-300
+      hover:-translate-y-0
   }
   .navbar-button-mobile {
     @apply
@@ -31,9 +36,26 @@
       tracking-widest
       hover:text-[#fafafa]/40
   }
+  .cards {
+    @apply
+    bg-zinc-800
+    py-3 
+    mr-3 
+    mt-4 
+    md:mt-5 
+    rounded-2xl 
+    shadow-lg 
+    hover:shadow-2xl 
+    hover:shadow-teal-600
+    shadow-gray-800 
+    w-[100px] 
+    h-[115px] 
+    flex 
+    flex-col 
+    items-center
+  }
 }
 
 * {
   font-family: 'Ubuntu';
 }
-

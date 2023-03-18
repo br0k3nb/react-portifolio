@@ -1,0 +1,42 @@
+[
+  {
+    "skill": "mongodb",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+  },
+  {
+    "skill": "mysql",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+  },
+  {
+    "skill": "docker",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+  },
+  {
+    "skill": "redis",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+  },
+  {
+    "skill": "git",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+  },
+  {
+    "skill": "vscode",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+  },
+  {
+    "skill": "atom",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/atom/atom-original.svg"
+  },
+  {
+    "skill": "androd studio",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+  },
+  {
+    "skill": "linux",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+  },
+  {
+    "skill": "windows",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
+  }
+]
