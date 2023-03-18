@@ -6,16 +6,22 @@ import projects from "../datasets/projects";
 export default function Projects() {
 
   return (
-    <div className="p-24 xxs:p-10">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }} 
+      transition={{ duration: 1.2 }} 
+      className="p-24 xxs:p-10"
+    >
       <h1 className="my-10 text-center font-bold text-4xl pb-14 xxs:pb-5">
         Projects
-        <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
+        <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"/> 
       </h1>
 
       <motion.div
-        initial={{ x:-600, opacity: 0 }}
+        initial={{ x:-400, opacity: 0 }}
         whileInView={{ x:0, opacity: 1 }}
-        transition={{ duration: 1.3 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
         className="flex flex-col space-y-28"
       >
         {projects.map((project, idx) => {
@@ -60,6 +66,6 @@ export default function Projects() {
           )
         })}
       </motion.div>
-    </div>
+    </motion.div >
   )
 }

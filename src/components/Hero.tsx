@@ -1,5 +1,4 @@
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
-import { Link } from 'react-scroll';
 import { HiArrowDown } from "react-icons/hi"
 import { motion } from 'framer-motion';
 
@@ -18,7 +17,12 @@ export default function Hero() {
     });
 
     return (
-        <div>
+        <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }} 
+            transition={{ duration: 1.2 }}
+            className='mb-36'
+        >
             <div className="relative flex flex-col text-center items-center justify-center my-10 py-16 sm:py-32 lg:flex-row sm:flex-col md:py-48 md:flex-col md:space-x-10 md:text-left">
                 <motion.div 
                     initial={{ x: -200, opacity: 0}}
@@ -56,33 +60,21 @@ export default function Hero() {
                         makes life easier and more meaningful.
                     </p>
                     <div className="flex justify-center lg:justify-start">
-                        <Link
-                            to="projects"
-                            className="text-neutral-100 uppercase text-sm hover:-translate-y-0 hover:scale-110 transition-all ease-in-out delay-150 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:bg-teal-600 duration-300"
-                            activeClass="active"
-                            spy={true}
-                            smooth={true}
-                            offset={-100}
-                            duration={500}
+                        <a
+                            href="#projects"
+                            className="text-neutral-100 uppercase text-sm transition-all ease-in-out delay-150 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:-translate-y-0 hover:scale-110 hover:bg-teal-600 duration-300"
                         >
                             Projects
-                        </Link>
+                        </a>
                     </div>
                     
                 </motion.div>
             </div>
             <div className="flex flex-row items-center text-center justify-center pb-10">
-                <Link
-                    to="about"
-                    activeClass="active"
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={500}
-                >
+                <a href="#about">
                     <HiArrowDown size={35} className="animate-bounce" />
-                </Link>
+                </a>
             </div>
-        </div>
+        </motion.div>
     )
 }

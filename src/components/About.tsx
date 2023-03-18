@@ -11,10 +11,15 @@ type Props = {}
 export default function About({ }: Props) {
 
     return (
-        <div className="my-12 pt-12 pb-12 md:pt-16 md:pb-48 md:px-10 lg:px-16 ">
-            <h1 className="text-center font-bold text-4xl xxs:text-3xl">
+        <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }} 
+            transition={{ duration: 1.2 }}
+            className="my-12 mt-5 pb-12 md:pt-16 md:pb-48 md:px-10 lg:px-16"
+        >
+            <h1 className="text-center font-bold text-4xl xxs:text-3xl mt-16">
                 About Me
-                <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
+                <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"/>
             </h1>
 
             <div className="flex flex-col space-y-10 mt-16 xxs:mt-8 items-stretch justify-center md:space-x-15 sm:space-x-12 md:space-y-0 md:p-8 md:flex-row md:text-left xxs:p-7 sm:px-10">
@@ -162,6 +167,6 @@ export default function About({ }: Props) {
                     </div>
                 </motion.div>
             </div>
-        </div>
+        </motion.div>
     )
 }
