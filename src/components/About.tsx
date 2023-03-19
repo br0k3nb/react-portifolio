@@ -15,7 +15,7 @@ export default function About({ }: Props) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }} 
             transition={{ duration: 1.2 }}
-            className="my-12 mt-5 pb-12 md:pt-16 lg:px-32 md:pb-48 md:px-10"
+            className="my-12 mt-5 md:pt-16 lg:px-32 pb-48 mb-10 md:px-10 xxs:pb-36"
         >
             <h1 className="text-center font-bold text-4xl xxs:text-3xl mt-16">
                 About Me
