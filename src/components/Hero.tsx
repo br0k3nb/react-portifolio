@@ -21,7 +21,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }} 
             transition={{ duration: 1.2 }}
-            className='mb-36'
+            className='mb-40'
         >
             <div className="relative flex flex-col text-center items-center justify-center my-10 py-16 sm:py-32 lg:flex-row sm:flex-col md:py-48 md:flex-col md:space-x-10 md:text-left">
                 <motion.div 

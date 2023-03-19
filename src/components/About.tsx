@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import computer from '../assets/about-me.png';
+import about from '../assets/about-me.png';
 
 import skills from '../datasets/skills.json';
 import tools from '../datasets/tools.json';
@@ -15,7 +15,7 @@ export default function About({ }: Props) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }} 
             transition={{ duration: 1.2 }}
-            className="my-12 mt-5 pb-12 md:pt-16 md:pb-48 md:px-10 lg:px-16"
+            className="my-12 mt-5 pb-12 md:pt-16 lg:px-32 md:pb-48 md:px-10"
         >
             <h1 className="text-center font-bold text-4xl xxs:text-3xl mt-16">
                 About Me
@@ -63,13 +63,18 @@ export default function About({ }: Props) {
                         always open to new opportunities. 🙂
                     </p>
                     <img
-                        src={computer}
+                        src={about}
                         alt=""
                         width={325}
                         height={325}
-                        className="pt-10 mx-auto md:w-[700px] md:h-[600px] object-cover sm:w-[500px] sm:h-[400px]"
+                        className="pt-10 mx-auto object-cover md:w-[700px] md:h-[600px] lg:w-[780px] lg:h-[680px]  sm:w-[500px] sm:h-[400px]"
                     />
                 </motion.div>
+
+                <div className='hidden lg:flex'>
+                    <hr className="w-1 h-[100%] shadow-sm shadow-teal-900/30 bg-stone-700/30 border-0 rounded"/>
+                </div>
+                
                 <motion.div
                     initial={{ x: 200, opacity: 0 }}
                     transition={{ duration: 1.4 }}
