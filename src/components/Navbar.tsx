@@ -56,9 +56,9 @@ export default function Navbar() {
 
                             <hr className='border-gray-600 md:hidden md:w-0'/> 
 
-                            <button className={`bg-stone-500 p-2.5 px-2.5 rounded-full hover:animate-spin-slow hover:bg-stone-600 ${!navbar && 'mt-10'}`}>
+                            {/* <button className={`bg-stone-500 p-2.5 px-2.5 rounded-full hover:animate-spin-slow hover:bg-stone-600 ${!navbar && 'mt-10'}`}>
                                 <RiSunLine size={20} />
-                            </button>
+                            </button> */}
 
                             <div className='mt-0 pt-0 md:hidden p-0 m-0'/> 
                         </div>
