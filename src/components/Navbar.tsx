@@ -54,7 +54,7 @@ export default function Navbar() {
                                 Projects
                             </a>
 
-                            <hr className='border-gray-600 md:hidden md:w-0'/> 
+                            {/* <hr className='border-gray-600 md:hidden md:w-0'/>  */}
 
                             {/* <button className={`bg-stone-500 p-2.5 px-2.5 rounded-full hover:animate-spin-slow hover:bg-stone-600 ${!navbar && 'mt-10'}`}>
                                 <RiSunLine size={20} />
