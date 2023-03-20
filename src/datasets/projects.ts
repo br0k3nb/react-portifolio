@@ -14,7 +14,7 @@ export default [
     "image": notes,
     "github": "https://github.com/br0k3nb/Noap-typescript",
     "link": "https://noap-typescript.vercel.app/",
-    "underConstruction": false,
+    "underConstruction": true,
     "codeBase": [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
