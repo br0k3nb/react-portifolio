@@ -1,6 +1,5 @@
-import computer from '../assets/computer.png';
 import mobile from '../assets/mobile.jpg';
-import notes from '../assets/notes.jpeg';
+import notes from '../assets/noap_sign_in.png';
 import csgo from '../assets/csgo.jpg';
 import financial from '../assets/financial.png';
 import builder from '../assets/builder.png';
@@ -10,11 +9,11 @@ import shopperMobile from '../assets/shopper-mobile.png';
 export default [
   {
     "name": "Noap",
-    "description": "Noap is a simple, note app, reminder and much more! 📜",
+    "description": "Noap is a notes application heavily inspired by the Evernote app. It's being built using the MERN stack, (with typescript), Lexical editor and a lot of different packages, like: React Query, React Hook Form and Framer Motion. For more information about the tech behind Noap, please have a look at the repository!",
     "image": notes,
     "github": "https://github.com/br0k3nb/Noap-typescript",
-    "link": "https://noap-typescript.vercel.app/",
-    "underConstruction": true,
+    "link": "https://noap.vercel.app/",
+    "underConstruction": false,
     "codeBase": [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
