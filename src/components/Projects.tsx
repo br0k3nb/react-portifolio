@@ -22,7 +22,6 @@ export default function Projects() {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.2 }}
           viewport={{ once: true }}
-          // className="container"
         >
           <div className="flex justify-center flex-wrap xxs:flex-col">
             {projects.map((project, idx) => {
@@ -31,7 +30,7 @@ export default function Projects() {
                     initial={ project.underConstruction ? { opacity: 0.80 } : { opacity: 1 }}
                     whileHover={{ scale: 1.04, opacity: 1 }}
                     transition={{ type: "spring", stiffness: 90, damping: 10 }}
-                    className={`w-full xxs:!w-[78%] sm:w-[80%] md:w-[75%] lg:w-1/2 xl:w-[32%] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto`}
+                    className={`xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto`}
                   >
                       <div className={`block shadow-2xl shadow-teal-900/30 hover:shadow-teal-800/100 bg-stone-800 hover:shadow-xl rounded-2xl overflow-hidden `}>
                         <div className="relative pb-64 overflow-hidden xxs:pb-44">
