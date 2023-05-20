@@ -5,13 +5,9 @@ import { motion } from 'framer-motion';
 import me from '../assets/me2.jpg';
 
 export default function Hero() {
-    
-    const [text, count] = useTypewriter({
-        words: [
-            "Hi, my name is Rodrigo!",
-            "A guy who loves ☕",
-            "<But loves more to code />"
-        ],
+
+    const [ text ] = useTypewriter({
+        words: [ "Hi, my name is Rodrigo!", "A guy who loves ☕", "<But loves more to code />" ],
         loop: true,
         delaySpeed: 1500,
     });
@@ -31,7 +27,6 @@ export default function Hero() {
                     className="md:mt-2 md:px-10"
                 >
                     <div className="absolute rounded-full object-cover shadow-2xl shadow-slate-400 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
-                    
                     <img
                         src={me}
                         alt="Profile picture"
@@ -39,7 +34,6 @@ export default function Hero() {
                         height={200}
                         className="rounded-full object-cover md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48"
                     />
-                
                 </motion.div>
                 <motion.div 
                     initial={{ x: 600, opacity: 0}}
@@ -60,10 +54,7 @@ export default function Hero() {
                         makes life easier and more meaningful.
                     </p>
                     <div className="flex justify-center lg:justify-start">
-                        <a
-                            href="#projects"
-                            className="text-neutral-100 uppercase text-sm transition-all ease-in-out delay-150 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:-translate-y-0 hover:scale-110 hover:bg-teal-600 duration-300"
-                        >
+                        <a href="#projects" className="text-neutral-100 uppercase text-sm transition-all ease-in-out delay-150 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:-translate-y-0 hover:scale-110 hover:bg-teal-600 duration-300">
                             Projects
                         </a>
                     </div>
@@ -71,9 +62,7 @@ export default function Hero() {
                 </motion.div>
             </div>
             <div className="flex flex-row items-center text-center justify-center pb-10">
-                <a href="#about">
-                    <HiArrowDown size={35} className="animate-bounce" />
-                </a>
+                <a href="#about"> <HiArrowDown size={35} className="animate-bounce" /> </a>
             </div>
         </motion.div>
     )

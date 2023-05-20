@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import projects from "../datasets/projects";
 
 export default function Projects() {
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,7 +23,7 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           <div className="flex justify-center flex-wrap xxs:flex-col">
-            {projects.map((project, idx) => {
+            {projects.map(project => {
               return (
                   <motion.div
                     initial={ project.underConstruction ? { opacity: 0.80 } : { opacity: 1 }}
@@ -61,9 +60,7 @@ export default function Projects() {
                         <div className="p-4">
                           <div className="px-2">
                             <div className="mb-8 flex flex-row space-x-2">
-                              {project.codeBase?.map((icons, idx) => (
-                                <img draggable={false} src={icons} alt="" key={idx} className='h-[30px] w-[30px] xxs:w-[30px] xxs:h-[35px]'/>
-                              ))}
+                              {project.codeBase?.map((icons, idx) => <img draggable={false} src={icons} alt="" key={idx} className='h-[30px] w-[30px] xxs:w-[30px] xxs:h-[35px]'/> )}
                             </div>
                             <div className="flex flex-row align-bottom space-x-4 mb-2">
                               <a 
@@ -71,19 +68,14 @@ export default function Projects() {
                                 href={project.github === '' ? '#' : project.github}
                                 className={`${project.link === '' && 'text-gray-100/70'}`}
                               >
-                                <BsGithub
-                                  className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${project.link === '' && 'cursor-not-allowed hover:translate-y-0'}`}
-                                />
+                                <BsGithub className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${project.link === '' && 'cursor-not-allowed hover:translate-y-0'}`}/>
                               </a>
                               <a 
                                 draggable={false}
                                 href={project.link === '' ? '#' : project.link}
                                 className={`${project.link === '' && 'text-gray-100/70'}`}
                               >
-                                <BsArrowUpRightSquare
-                                  // size={30}
-                                  className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${project.link === '' && 'cursor-not-allowed hover:translate-y-0'}`}
-                                />
+                                <BsArrowUpRightSquare className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${project.link === '' && 'cursor-not-allowed hover:translate-y-0'}`}/>
                               </a>
                             </div> 
                           </div>

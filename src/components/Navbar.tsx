@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { RiMoonFill, RiSunLine } from 'react-icons/ri';
+// import { RiMoonFill, RiSunLine } from 'react-icons/ri';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 export default function Navbar() {
 
@@ -13,7 +13,7 @@ export default function Navbar() {
                 <div>
                     <div className="flex items-center justify-between py-3">
                         <div className="md:py-2 mb:block">
-                            <h2 className="main text-2xl tracking-tight pb-1 xxs:hidden">Rodrigo Oliveira</h2>
+                            <h2 className="main text-2xl pb-1 xxs:hidden">Rodrigo Oliveira</h2>
                             <h2 className="main text-2xl tracking-tighter pb-1 hidden xxs:flex">R 
                                 <span className='text-teal-400 main text-2xl'>O</span>
                             </h2>
@@ -28,29 +28,15 @@ export default function Navbar() {
                 <div>
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>
                         <div className="items-start justify-start space-y-5 md:flex md:space-x-6 md:space-y-0 md:justify-center md:items-center">
-                            <a
-                                href='#main'
-                                className="navbar-button-mobile md:links"
-                                onClick={() => setNavbar(!navbar)}
-                            >
+                            <a href='#main' className="navbar-button-mobile md:links" onClick={() => setNavbar(!navbar)}>
                                 Home
                             </a>
-
                             <hr className='border-gray-600 md:hidden md:w-0'/>
-
-                            <a
-                                href='#about'
-                                className="navbar-button-mobile md:links"
-                                onClick={() => setNavbar(!navbar)}>
-                                About
+                            <a href='#about' className="navbar-button-mobile md:links" onClick={() => setNavbar(!navbar)}>
+                                About me
                             </a>
-
                             <hr className='border-gray-600 md:hidden md:w-0'/>   
-
-                            <a
-                                href='#projects'
-                                className="navbar-button-mobile md:links"
-                                onClick={() => setNavbar(!navbar)}>
+                            <a href='#projects' className="navbar-button-mobile md:links" onClick={() => setNavbar(!navbar)}>
                                 Projects
                             </a>
 
@@ -59,8 +45,7 @@ export default function Navbar() {
                             {/* <button className={`bg-stone-500 p-2.5 px-2.5 rounded-full hover:animate-spin-slow hover:bg-stone-600 ${!navbar && 'mt-10'}`}>
                                 <RiSunLine size={20} />
                             </button> */}
-
-                            <div className='mt-0 pt-0 md:hidden p-0 m-0'/> 
+                            <div className='md:hidden p-0 m-0'/> 
                         </div>
                     </div>
                 </div>

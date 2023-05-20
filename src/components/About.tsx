@@ -6,10 +6,7 @@ import skills from '../datasets/skills.json';
 import tools from '../datasets/tools.json';
 import learning from '../datasets/learning.json';
 
-type Props = {}
-
-export default function About({ }: Props) {
-
+export default function About() {
     return (
         <motion.div 
             initial={{ opacity: 0 }}
@@ -74,7 +71,7 @@ export default function About({ }: Props) {
                 <div className='hidden lg:flex'>
                     <hr className="w-1 h-[100%] shadow-sm shadow-teal-900/30 bg-stone-700/30 border-0 rounded"/>
                 </div>
-                
+
                 <motion.div
                     initial={{ x: 200, opacity: 0 }}
                     transition={{ duration: 1.4 }}
@@ -94,27 +91,19 @@ export default function About({ }: Props) {
                                     className='cards'
                                     key={idx}
                                 >
-                                    <p
-                                        className='text-white text-xs p-1 mb-2 text-center uppercase tracking-widest'
-                                        draggable={false}
-                                    >
+                                    <p className='text-white text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
                                         {item.skill}
-
                                     </p>
-                                    <span
-                                        className='h-25 w-25 mx-auto justify-center flex pb-2'
-                                    >
+                                    <span className='h-25 w-25 mx-auto justify-center flex pb-2'>
                                         <img draggable={false} width={50} height={50} src={item.img} />
                                     </span>
                                 </motion.div>
                             )
                         })}
                     </div>
-
                     <div className='flex justify-center mt-8'>
                         <p className='text-gray-500 text-md tracking-widest uppercase'> tools </p>
                     </div>
-
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-2">
                         {tools.map((item, idx) => {
                             return (
@@ -124,27 +113,19 @@ export default function About({ }: Props) {
                                     className='cards'
                                     key={idx}
                                 >
-                                    <p
-                                        className="text-white text-xs p-1 mb-2 text-center uppercase tracking-widest"
-                                        draggable={false}
-                                    >
+                                    <p className="text-white text-xs p-1 mb-2 text-center uppercase tracking-widest" draggable={false}>
                                         {item.skill}
-
                                     </p>
-                                    <span
-                                        className='h-25 w-25 mx-auto justify-center flex pb-2'
-                                    >
+                                    <span className='h-25 w-25 mx-auto justify-center flex pb-2'>
                                         <img draggable={false} width={50} height={50} src={item.img} />
                                     </span>
                                 </motion.div>
                             )
                         })}
                     </div>
-
                     <div className='flex justify-center mt-8'>
                         <p className='text-gray-500 text-md tracking-widest uppercase'> learning / to learn </p>
                     </div>
-
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-4">
                         {learning.map((item, idx) => {
                             return (
@@ -154,16 +135,10 @@ export default function About({ }: Props) {
                                     className='cards'
                                     key={idx}
                                 >
-                                    <p
-                                        className="text-white text-xs p-1 mb-2 text-center uppercase tracking-widest"
-                                        draggable={false}
-                                    >
+                                    <p className="text-white text-xs p-1 mb-2 text-center uppercase tracking-widest" draggable={false}>
                                         {item.skill}
-
                                     </p>
-                                    <span
-                                        className='h-25 w-25 mx-auto justify-center flex pb-2'
-                                    >
+                                    <span className='h-25 w-25 mx-auto justify-center flex pb-2'>
                                         <img draggable={false} width={50} height={50} src={item.img} />
                                     </span>
                                 </motion.div>
