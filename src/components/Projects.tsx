@@ -3,10 +3,12 @@ import { BsGithub, BsArrowUpRightSquare, BsArrowRight, BsArrowLeft } from "react
 import { AnimatePresence, motion } from "framer-motion";
 
 import projects from "../datasets/projects";
+import SvgLoader from "./Loader";
 
 export default function Projects() {
   const [ imageToShow, setImageToShow ] = useState(0);
   const [ direction, setDirection ] = useState(0);
+  const [ imageIsLoading, setImageIsLoading ] = useState(false);
   const [ deviceScreenSize, setDeviceScreeSize ] = useState(window.innerWidth);
 
   addEventListener("resize", () => setTimeout(() => setDeviceScreeSize(window.innerWidth), 500));
@@ -36,6 +38,7 @@ export default function Projects() {
   }
 
   const handleLeftClick = (image: any) => {
+    setImageIsLoading(true);
     if (imageToShow) setImageToShow(imageToShow - 1);
     else setImageToShow(image.length - 1);
 
@@ -43,6 +46,7 @@ export default function Projects() {
   };
 
   const handleRightClick = (image: any) => {
+    setImageIsLoading(true);
     if(imageToShow < image.length - 1) setImageToShow(imageToShow + 1);
     else setImageToShow(0);
 
@@ -67,11 +71,12 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           <div className="flex justify-center flex-wrap xxs:flex-col">
-            {projects.map(project => {
+            {projects.map((project, index: number) => {
               const { image, underConstruction, description, name, codeBase, github, link } = project;
 
               return (
                 <motion.div
+                  key={index}
                   initial={underConstruction ? { opacity: 0.80 } : { opacity: 1 }}
                   whileHover={deviceScreenSize > 640 ? { scale: 1.04, opacity: 1 } : undefined}
                   transition={{ type: "spring", stiffness: 80, damping: 10 }} 
@@ -103,20 +108,26 @@ export default function Projects() {
                               size={35} 
                               className="z-10 absolute top-[7.4rem] xxs:top-[5rem] active:ring-0 left-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
                             />
-                            
                             <AnimatePresence initial={false} custom={direction}>
                               <motion.img
+                                id="project-image"
                                 exit="exit"
                                 animate="animate"
                                 initial="initial"
                                 custom={direction}
                                 variants={variants}
-                                alt="Project images"
                                 src={image[imageToShow]}
                                 key={image[imageToShow]}
-                                className="absolute inset-0 h-full w-full object-cover"
-                              />
+                                onLoad={() => setImageIsLoading(false)}
+                                onLoadedData={() => console.log('tfff')}
+                                className={`absolute inset-0 h-full w-full object-cover`}
+                                />
                             </AnimatePresence>
+                            {imageIsLoading && ( 
+                              <div className="z-10 absolute top-[7.4rem] xxs:top-[5rem] left-40 xxs:left-32 bg-gray-900 px-3 py-3 rounded-full">
+                                  <SvgLoader options={{showLoadingText: true}}/>
+                              </div>
+                            )}
                           </>
                         )}
                       </div>
