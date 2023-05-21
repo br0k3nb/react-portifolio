@@ -54,7 +54,7 @@ export default function Hero() {
                         makes life easier and more meaningful.
                     </p>
                     <div className="flex justify-center lg:justify-start">
-                        <a href="#projects" className="text-neutral-100 uppercase text-sm transition-all ease-in-out delay-150 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:-translate-y-0 hover:scale-110 hover:bg-teal-600 duration-300">
+                        <a href="#projects" className="text-neutral-100 uppercase text-sm transition-all ease-in-out duration-300 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:-translate-y-0 hover:scale-105 hover:bg-teal-600">
                             Projects
                         </a>
                     </div>

@@ -10,7 +10,6 @@ import noap3 from '../assets/noap-screenshots3.png';
 import noap4 from '../assets/noap-screenshots4.png';
 import shopperMobile from '../assets/shopper-mobile.png';
 
-
 export default [
   {
     "name": "Noap",
