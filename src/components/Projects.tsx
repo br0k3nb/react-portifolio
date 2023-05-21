@@ -82,7 +82,7 @@ export default function Projects() {
                   transition={{ type: "spring", stiffness: 80, damping: 10 }} 
                   className="xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto"
                 >
-                    <div className="block shadow-2xl shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 hover:border-gray-500 xxs:hover:border-gray-600">
+                    <div className="block hover:shadow-2xl hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600">
                       <div className="relative pb-64 overflow-hidden xxs:pb-44">
                         {underConstruction ? (
                           <div className="absolute inset-0">
@@ -93,7 +93,7 @@ export default function Projects() {
                                 </p>
                                 <span className="text-6xl xxs:text-4xl xxs:py-4 sm:text-5xl sm:mt-2">👷‍♂️</span>
                               </div>
-                              <img className="object-cover blur-xs z-0" src={project.image[0]} alt="Project image" />
+                              <img className="object-cover blur-[1px] z-0 border border-transparent border-b-gray-600" src={image[0]} alt="Project image" />
                             </div>
                           </div>
                         ) : (
@@ -110,7 +110,6 @@ export default function Projects() {
                             />
                             <AnimatePresence initial={false} custom={direction}>
                               <motion.img
-                                id="project-image"
                                 exit="exit"
                                 animate="animate"
                                 initial="initial"
@@ -119,13 +118,12 @@ export default function Projects() {
                                 src={image[imageToShow]}
                                 key={image[imageToShow]}
                                 onLoad={() => setImageIsLoading(false)}
-                                onLoadedData={() => console.log('tfff')}
-                                className={`absolute inset-0 h-full w-full object-cover`}
+                                className="absolute inset-0 h-full w-full object-cover border border-transparent border-b-gray-600"
                                 />
                             </AnimatePresence>
                             {imageIsLoading && ( 
                               <div className="z-10 absolute top-[7.4rem] xxs:top-[5rem] left-40 xxs:left-32 bg-gray-900 px-3 py-3 rounded-full">
-                                  <SvgLoader options={{showLoadingText: true}}/>
+                                  <SvgLoader options={{showLoadingText: true}} />
                               </div>
                             )}
                           </>
