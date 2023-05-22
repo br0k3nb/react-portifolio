@@ -57,7 +57,7 @@ export default function Projects() {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 1.2 }}      
       className="py-32 px-20 xxs:!p-0 lg:px-28 mb-28"
     >
       <h1 className="text-center font-bold text-4xl pb-14 xxs:pb-5">
@@ -148,14 +148,14 @@ export default function Projects() {
                               href={github ? github as string : '#'}
                               className={`${!link && 'text-gray-100/70'}`}
                             >
-                              <BsGithub className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && 'cursor-not-allowed hover:translate-y-0'}`}/>
+                              <BsGithub className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}/>
                             </a>
                             <a 
                               draggable={false}
                               href={link ? link as string : '#'}
                               className={`${!link && 'text-gray-100/70'}`}
                             >
-                              <BsArrowUpRightSquare className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && 'cursor-not-allowed hover:translate-y-0'}`}/>
+                              <BsArrowUpRightSquare className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}/>
                             </a>
                           </div> 
                         </div>

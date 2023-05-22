@@ -12,10 +12,6 @@
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
   },
   {
-    "skill": "redis",
-    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
-  },
-  {
     "skill": "git",
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
   },

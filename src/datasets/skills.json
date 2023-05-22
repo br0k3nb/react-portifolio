@@ -24,24 +24,12 @@
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
   },
   {
-    "skill": "angular",
-    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg"
-  },
-  {
-    "skill": "vue",
-    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
-  },
-  {
     "skill": "react",
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
   },
   {
     "skill": "material ui",
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
-  },
-  {
-    "skill": "next.js",
-    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
   },
   {
     "skill": "bootstrap",
