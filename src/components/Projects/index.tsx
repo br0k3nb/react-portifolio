@@ -89,12 +89,12 @@ export default function Projects() {
                           <div className="absolute inset-0">
                             <div className="relative flex items-center">
                               <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-28 xxs:top-12'>
-                                <p className="text-gray-100 text-2xl py-5 xxs:py-5 xxs:mt-2 xxs:text-sm xxs:uppercase sm:text-lg sm:py-4 sm:uppercase lg:tracking-wide text-center">
+                                <p className="text-gray-100 text-2xl uppercase py-5 xxs:py-5 xxs:mt-2 xxs:text-sm sm:text-lg sm:py-4 lg:tracking-wide text-center">
                                     Under Construction
                                 </p>
                                 <span className="text-6xl xxs:text-4xl xxs:py-4 sm:text-5xl sm:mt-2">👷‍♂️</span>
                               </div>
-                              <img className="object-cover blur-[1px] z-0 border border-transparent border-b-gray-600 !h-[400px] w-full" src={image[0]} alt="Project image" />
+                              <img className="object-cover blur-[1px] z-0 !h-[400px] w-full" src={image[0]} alt="Project image" />
                             </div>
                           </div>
                         ) : (
@@ -102,12 +102,12 @@ export default function Projects() {
                             <BsArrowRight 
                               onClick={() => handleRightClick(image)} 
                               size={35}
-                              className="text-gray-100 z-10 absolute top-[8rem] xxs:top-[5rem] right-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
+                              className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto right-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
                             />
                             <BsArrowLeft
                               onClick={() => handleLeftClick(image)}
                               size={35} 
-                              className="text-gray-100 z-10 absolute top-[8rem] xxs:top-[5rem] active:ring-0 left-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
+                              className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto  left-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
                             />
                             <AnimatePresence initial={false} custom={direction}>
                               <motion.img
@@ -123,8 +123,8 @@ export default function Projects() {
                                 />
                             </AnimatePresence>
                             {imageIsLoading && ( 
-                              <div className="text-gray-100 z-10 absolute top-[7.4rem] xxs:top-[5rem] left-40 xxs:left-32 bg-gray-900 px-3 py-3 rounded-full">
-                                  <SvgLoader options={{showLoadingText: true}} />
+                              <div className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto h-12 left-0 right-0 mx-auto w-40 bg-gray-900 py-3 rounded-full">
+                                  <SvgLoader options={{ showLoadingText: true }} />
                               </div>
                             )}
                           </>
