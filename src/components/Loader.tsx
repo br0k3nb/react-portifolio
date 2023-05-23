@@ -10,7 +10,7 @@ type Props = {
 export default function SvgLoader({ options }: Props) {
     const { showLoadingText, LoaderClassName, LoadingTextClassName, wrapperClassName } = options as any;
     return (
-        <div className={`flex flex-row justify-center ${wrapperClassName && wrapperClassName}`}>
+        <div className={`flex flex-row justify-center animate-pulse ${wrapperClassName && wrapperClassName}`}>
             <svg
                 className={`inline w-4 h-4 text-white animate-spin xxs:my-1 my-[0.13rem] mr-3 ${LoaderClassName && LoaderClassName}`}
                 viewBox="0 0 100 101"
