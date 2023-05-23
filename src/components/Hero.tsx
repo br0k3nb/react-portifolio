@@ -26,7 +26,7 @@ export default function Hero() {
                     transition={{ duration: 1.2 }}
                     className="md:mt-2 md:px-10"
                 >
-                    <div className="absolute rounded-full object-cover shadow-2xl shadow-slate-400 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
+                    <div className="absolute rounded-full object-cover shadow-2xl shadow-teal-600/60 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
                     <img
                         src={me}
                         alt="Profile picture"
@@ -54,7 +54,7 @@ export default function Hero() {
                         makes life easier and more meaningful.
                     </p>
                     <div className="flex justify-center lg:justify-start">
-                        <a href="#projects" className="text-neutral-100 uppercase text-sm transition-all ease-in-out duration-300 tracking-widest px-6 py-3 border border-teal-600 rounded-full shadow-lg shadow-gray-800 hover:-translate-y-0 hover:scale-105 hover:bg-teal-600">
+                        <a href="#projects" className="text-gray-100 uppercase text-[15px]  hover:shadow-teal-900 bg-teal-600 hover:bg-teal-700 transition-all ease-in-out duration-300 tracking-widest px-6 py-3 rounded-full shadow-lg shadow-gray-800">
                             Projects
                         </a>
                     </div>

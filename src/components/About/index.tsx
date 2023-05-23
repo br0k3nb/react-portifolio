@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 
-import about from '../assets/about-me.png';
+import about from '../../assets/about-me.png';
 
-import skills from '../datasets/skills.json';
-import tools from '../datasets/tools.json';
-import learning from '../datasets/learning.json';
+import skills from '../../datasets/skills.json';
+import tools from '../../datasets/tools.json';
+import learning from '../../datasets/learning.json';
+
+import { Container } from './style';
 
 export default function About() {
     return (
@@ -51,9 +53,7 @@ export default function About() {
                     <br />
                     <p className="text-lg xxs:text-sm">
                         I believe that you should{" "}
-                        <span className="font-bold text-teal-500">
-                            never stop growing
-                        </span>{" "}
+                        <span className="font-bold text-teal-500"> never stop growing </span>{" "}
                         and that's what i strive to do, i have a passion for
                         technology and a desire to always push the limits of what is
                         possible. I'm excited to see where my career takes me and i'm
@@ -61,7 +61,6 @@ export default function About() {
                     </p>
                     <img
                         src={about}
-                        alt=""
                         width={325}
                         height={325}
                         className="pt-10 mx-auto object-cover md:w-[700px] md:h-[600px] lg:w-[780px] lg:h-[680px]  sm:w-[500px] sm:h-[400px]"
@@ -84,69 +83,46 @@ export default function About() {
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                         {skills.map((item, idx) => {
-                            return (
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                                    className='cards'
-                                    key={idx}
-                                >
-                                    <p className='text-white text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
-                                        {item.skill}
-                                    </p>
-                                    <span className='h-25 w-25 mx-auto justify-center flex pb-2'>
-                                        <img draggable={false} width={50} height={50} src={item.img} />
-                                    </span>
-                                </motion.div>
-                            )
+                            return (<CardBase idx={idx} item={item}/> )
                         })}
                     </div>
                     <div className='flex justify-center mt-8'>
-                        <p className='text-gray-500 text-md tracking-widest uppercase'> tools </p>
+                        <p className='text-gray-400 text-md tracking-widest uppercase'>tools</p>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-2">
                         {tools.map((item, idx) => {
-                            return (
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                                    className='cards'
-                                    key={idx}
-                                >
-                                    <p className="text-white text-xs p-1 mb-2 text-center uppercase tracking-widest" draggable={false}>
-                                        {item.skill}
-                                    </p>
-                                    <span className='h-25 w-25 mx-auto justify-center flex pb-2'>
-                                        <img draggable={false} width={50} height={50} src={item.img} />
-                                    </span>
-                                </motion.div>
-                            )
+                            return (<CardBase idx={idx} item={item}/>)
                         })}
                     </div>
                     <div className='flex justify-center mt-8'>
-                        <p className='text-gray-500 text-md tracking-widest uppercase'> learning / to learn </p>
+                        <p className='text-gray-400 text-md tracking-widest uppercase'> learning / to learn </p>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-4">
                         {learning.map((item, idx) => {
-                            return (
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                                    className='cards'
-                                    key={idx}
-                                >
-                                    <p className="text-white text-xs p-1 mb-2 text-center uppercase tracking-widest" draggable={false}>
-                                        {item.skill}
-                                    </p>
-                                    <span className='h-25 w-25 mx-auto justify-center flex pb-2'>
-                                        <img draggable={false} width={50} height={50} src={item.img} />
-                                    </span>
-                                </motion.div>
-                            )
+                            return (<CardBase idx={idx} item={item}/>)
                         })}
                     </div>
                 </motion.div>
             </div>
+        </motion.div>
+    )
+}
+
+export function CardBase({idx, item}: any) {
+    return (
+        <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }}
+            key={idx}
+        >
+            <Container className='cards overflow-hidden'>
+                <p className='text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
+                    {item.skill}
+                </p>
+                <span className='!bg-inherit h-25 w-25 mx-auto justify-center flex pb-2'>
+                    <img draggable={false} width={50} height={50} src={item.img} />
+                </span>
+            </Container>
         </motion.div>
     )
 }

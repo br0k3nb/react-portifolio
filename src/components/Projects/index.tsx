@@ -2,8 +2,9 @@ import { useState } from "react";
 import { BsGithub, BsArrowUpRightSquare, BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 
-import projects from "../datasets/projects";
-import SvgLoader from "./Loader";
+import projects from "../../datasets/projects";
+import SvgLoader from "../Loader";
+import { Container } from "./style";
 
 export default function Projects() {
   const [ imageToShow, setImageToShow ] = useState(0);
@@ -82,31 +83,31 @@ export default function Projects() {
                   transition={{ type: "spring", stiffness: 80, damping: 10 }} 
                   className="xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto"
                 >
-                    <div className="block hover:shadow-2xl hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600">
-                      <div className="relative pb-64 overflow-hidden xxs:pb-44">
+                    <Container className="block shadow-2xl shadow-white hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600">
+                      <div className="relative pb-72 overflow-hidden xxs:pb-52">
                         {underConstruction ? (
                           <div className="absolute inset-0">
                             <div className="relative flex items-center">
-                              <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-24 xxs:top-12'>
-                                <p className="text-2xl py-5 xxs:py-5 xxs:mt-2 xxs:text-sm xxs:uppercase sm:text-lg sm:py-4 sm:uppercase lg:tracking-wide text-center">
+                              <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-28 xxs:top-12'>
+                                <p className="text-gray-100 text-2xl py-5 xxs:py-5 xxs:mt-2 xxs:text-sm xxs:uppercase sm:text-lg sm:py-4 sm:uppercase lg:tracking-wide text-center">
                                     Under Construction
                                 </p>
                                 <span className="text-6xl xxs:text-4xl xxs:py-4 sm:text-5xl sm:mt-2">👷‍♂️</span>
                               </div>
-                              <img className="object-cover blur-[1px] z-0 border border-transparent border-b-gray-600" src={image[0]} alt="Project image" />
+                              <img className="object-cover blur-[1px] z-0 border border-transparent border-b-gray-600 !h-[400px] w-full" src={image[0]} alt="Project image" />
                             </div>
                           </div>
                         ) : (
                           <>
                             <BsArrowRight 
                               onClick={() => handleRightClick(image)} 
-                              size={35} 
-                              className="z-10 absolute top-[7.4rem] xxs:top-[5rem] right-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
+                              size={35}
+                              className="text-gray-100 z-10 absolute top-[8rem] xxs:top-[5rem] right-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
                             />
                             <BsArrowLeft
                               onClick={() => handleLeftClick(image)}
                               size={35} 
-                              className="z-10 absolute top-[7.4rem] xxs:top-[5rem] active:ring-0 left-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
+                              className="text-gray-100 z-10 absolute top-[8rem] xxs:top-[5rem] active:ring-0 left-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
                             />
                             <AnimatePresence initial={false} custom={direction}>
                               <motion.img
@@ -118,21 +119,21 @@ export default function Projects() {
                                 src={image[imageToShow]}
                                 key={image[imageToShow]}
                                 onLoad={() => setImageIsLoading(false)}
-                                className="absolute inset-0 h-full w-full object-cover border border-transparent border-b-gray-600"
+                                className="absolute inset-0 h-full w-full object-cover"
                                 />
                             </AnimatePresence>
                             {imageIsLoading && ( 
-                              <div className="z-10 absolute top-[7.4rem] xxs:top-[5rem] left-40 xxs:left-32 bg-gray-900 px-3 py-3 rounded-full">
+                              <div className="text-gray-100 z-10 absolute top-[7.4rem] xxs:top-[5rem] left-40 xxs:left-32 bg-gray-900 px-3 py-3 rounded-full">
                                   <SvgLoader options={{showLoadingText: true}} />
                               </div>
                             )}
                           </>
                         )}
                       </div>
-                      <div className="p-4">
+                      <div className="p-4 border border-transparent border-t-inherit">
                         <div className="px-2">
                           <h2 className="mt-2 mb-4 font-thin text-3xl xxs:text-2xl">{name}</h2>
-                          <p className="text-base text-gray-300/90 xxs:text-sm">
+                          <p className="text-base xxs:text-sm opacity-90">
                             {description}
                           </p>
                         </div>
@@ -146,21 +147,21 @@ export default function Projects() {
                             <a 
                               draggable={false}
                               href={github ? github as string : '#'}
-                              className={`${!link && 'text-gray-100/70'}`}
+                              className={`${!link && 'blur-[1px]'}`}
                             >
                               <BsGithub className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}/>
                             </a>
                             <a 
                               draggable={false}
                               href={link ? link as string : '#'}
-                              className={`${!link && 'text-gray-100/70'}`}
+                              className={`${!link && 'blur-[1px]'}`}
                             >
                               <BsArrowUpRightSquare className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}/>
                             </a>
                           </div> 
                         </div>
                       </div>
-                    </div>
+                    </Container>
                   </motion.div>
                 )
               })}
