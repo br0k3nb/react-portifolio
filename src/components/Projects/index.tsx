@@ -84,11 +84,11 @@ export default function Projects() {
                   className="xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto"
                 >
                     <Container className="block shadow-2xl shadow-white hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600">
-                      <div className="relative pb-72 overflow-hidden xxs:pb-52">
+                      <div className="relative pb-64 overflow-hidden xxs:pb-52">
                         {underConstruction ? (
                           <div className="absolute inset-0">
                             <div className="relative flex items-center">
-                              <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-28 xxs:top-12'>
+                              <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-28 xxs:top-16'>
                                 <p className="text-gray-100 text-2xl uppercase py-5 xxs:py-5 xxs:mt-2 xxs:text-sm sm:text-lg sm:py-4 lg:tracking-wide text-center">
                                     Under Construction
                                 </p>
@@ -120,7 +120,7 @@ export default function Projects() {
                                 key={image[imageToShow]}
                                 onLoad={() => setImageIsLoading(false)}
                                 className="absolute inset-0 h-full w-full object-cover"
-                                />
+                              />
                             </AnimatePresence>
                             {imageIsLoading && ( 
                               <div className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto h-12 left-0 right-0 mx-auto w-40 bg-gray-900 py-3 rounded-full">
@@ -133,9 +133,7 @@ export default function Projects() {
                       <div className="p-4 border border-transparent border-t-inherit">
                         <div className="px-2">
                           <h2 className="mt-2 mb-4 font-thin text-3xl xxs:text-2xl">{name}</h2>
-                          <p className="text-base xxs:text-sm opacity-90">
-                            {description}
-                          </p>
+                          <p className="text-base xxs:text-sm opacity-90">{description}</p>
                         </div>
                       </div>
                       <div className="p-4">

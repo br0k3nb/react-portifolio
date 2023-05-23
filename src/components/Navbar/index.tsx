@@ -3,12 +3,16 @@ import { RiMoonFill, RiSunLine } from 'react-icons/ri';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
 
 import { Container } from './styles';
-import { ThemeCtx } from '../../App/App';
+import { ThemeCtx } from '../../context/ThemeContex';
 
 export default function Navbar() {
     const [ navbar, setNavbar ] = useState(false);
-
     const themeCtx = useContext(ThemeCtx);
+
+    const handleClickTheme = (theme: string) => {
+        themeCtx?.setTheme(theme);
+        localStorage.setItem("theme", theme);
+    }
 
     return (
         <Container className='w-full mx-auto px-8 border-b border-stone-600 shadow fixed top-0 sm:px-16 z-50 justify-between md:flex md:items-center'>
@@ -48,13 +52,13 @@ export default function Navbar() {
                             <p className='my-auto pr-2 uppercase text-sm tracking-widest cursor-default hidden xxs:flex'>Theme</p>
                             {themeCtx?.theme === "dark" ? (
                                 <RiSunLine 
-                                    onClick={() => themeCtx?.setTheme("light")}
+                                    onClick={() => handleClickTheme("light")}
                                     size={38} 
                                     className='bg-stone-400 p-2.5 px-2.5 rounded-full hover:bg-stone-500 text-gray-100' 
                                 />
                             ) : (
                                 <RiMoonFill 
-                                    onClick={() => themeCtx?.setTheme("dark")}
+                                    onClick={() => handleClickTheme("dark")}
                                     size={40} 
                                     className='bg-stone-400 p-2.5 pl-3 rounded-full hover:bg-stone-500 text-gray-100' 
                                 />

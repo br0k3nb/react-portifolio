@@ -82,25 +82,19 @@ export default function About() {
                         <h1 className="text-3xl mb-4 xxs:text-2xl">My Skills 🤓</h1>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                        {skills.map((item, idx) => {
-                            return (<CardBase idx={idx} item={item}/> )
-                        })}
+                        {skills.map((item, idx) => ( <CardBase key={idx} idx={idx} item={item}/> ))}
                     </div>
                     <div className='flex justify-center mt-8'>
-                        <p className='text-gray-400 text-md tracking-widest uppercase'>tools</p>
+                        <p className='text-md tracking-widest uppercase'>tools</p>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-2">
-                        {tools.map((item, idx) => {
-                            return (<CardBase idx={idx} item={item}/>)
-                        })}
+                        {tools.map((item, idx) => ( <CardBase key={idx} idx={idx} item={item}/> ))}
                     </div>
                     <div className='flex justify-center mt-8'>
-                        <p className='text-gray-400 text-md tracking-widest uppercase'> learning / to learn </p>
+                        <p className='text-md tracking-widest uppercase'> learning / to learn</p>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-4">
-                        {learning.map((item, idx) => {
-                            return (<CardBase idx={idx} item={item}/>)
-                        })}
+                        {learning.map((item, idx) => ( <CardBase key={idx} idx={idx} item={item}/> ))}
                     </div>
                 </motion.div>
             </div>
