@@ -14,7 +14,7 @@ export default [
   {
     "name": "Noap",
     "description": "Noap is a notes application heavily inspired by the Evernote app. It's being built using the MERN stack, (with typescript), Lexical editor and a lot of different packages, like: React Query, React Hook Form and Framer Motion. For more information about the tech behind Noap, please have a look at the repository!",
-    "image": [ notes, noap1, noap2, noap3, noap4 ],
+    "image": [notes, noap1, noap2, noap3, noap4],
     "github": "https://github.com/br0k3nb/Noap-typescript",
     "link": "https://noap.vercel.app/",
     "underConstruction": false,
@@ -29,7 +29,7 @@ export default [
   {
     "name": "BuilderIO",
     "description": "A application that lets you see the prices of the available parts and build your dream pc! 🖥️",
-    "image": [ builder ],
+    "image": [builder],
     "github": false,
     "link": false,
     "underConstruction": true,
@@ -44,7 +44,7 @@ export default [
   {
     "name": "Shopper",
     "description": "A fully responsive and functional e-commerce website 🛒",
-    "image": [ shopper ],
+    "image": [shopper],
     "github": false,
     "link": false,
     "underConstruction": true,
@@ -59,7 +59,7 @@ export default [
   {
     "name": "Shopper Mobile",
     "description": "Mobile version of Shopper built with React Native 🛒📱",
-    "image": [ shopperMobile ],
+    "image": [shopperMobile],
     "github": false,
     "link": false,
     "underConstruction": true,
@@ -74,7 +74,7 @@ export default [
   {
     "name": "Job+",
     "description": "Job+ is a mobile application designed to help you find a fitting job 🏢",
-    "image": [ mobile ],
+    "image": [mobile],
     "github": false,
     "link": false,
     "underConstruction": true,
@@ -89,7 +89,7 @@ export default [
   {
     "name": "Expenser",
     "description": "Expenser is a financial mobile application to help you keep track of your money 💸",
-    "image": [ financial ],
+    "image": [financial],
     "github": false,
     "link": false,
     "underConstruction": true,
@@ -103,7 +103,7 @@ export default [
   {
     "name": "Map picker",
     "description": "A configurable map picker for Counter-Strike: Global Offensive and VALORANT",
-    "image": [ csgo ],
+    "image": [csgo],
     "github": false,
     "link": false,
     "underConstruction": true,

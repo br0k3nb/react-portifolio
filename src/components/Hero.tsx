@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 import me from '../assets/me2.jpg';
 
 export default function Hero() {
-
-    const [ text ] = useTypewriter({
+    const [text] = useTypewriter({
         words: [ "Hi, my name is Rodrigo!", "A guy who loves ☕", "<But loves more to code />" ],
         loop: true,
         delaySpeed: 1500,
@@ -58,7 +57,6 @@ export default function Hero() {
                             Projects
                         </a>
                     </div>
-                    
                 </motion.div>
             </div>
             <div className="flex flex-row items-center text-center justify-center pb-10">

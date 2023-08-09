@@ -18,7 +18,7 @@ import '../App.css';
 
 export default function App() {
   const themeLocalStorage = localStorage.getItem("theme");
-  const [ theme, setTheme ] = useState(themeLocalStorage ? themeLocalStorage : "dark");
+  const [theme, setTheme] = useState(themeLocalStorage ? themeLocalStorage : "dark");
 
   return (
     <ThemeProvider theme={ theme === "dark" ? dark : light }>
