@@ -19,7 +19,7 @@ export default function Navbar() {
             <div>
                 <div className="flex items-center justify-between py-3">
                     <div className="md:py-2 mb:block">
-                        <h2 className="main text-2xl pb-1 xxs:hidden">Rodrigo <span className='text-teal-400'>O</span>liveira</h2>
+                        <h2 className="main text-2xl pb-1 xxs:hidden">Rodrigo <span className='text-teal-400'>Oliveira</span></h2>
                         <h2 className="main text-2xl tracking-tighter pb-1 hidden xxs:flex">R 
                             <span className='text-teal-400 main text-2xl'>O</span>
                         </h2>

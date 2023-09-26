@@ -2,19 +2,24 @@ import csgo from '../assets/csgo.jpg';
 import mobile from '../assets/mobile.jpg';
 import builder from '../assets/builder.png';
 import shopper from '../assets/shopper.png';
-import notes from '../assets/noap_sign_in.png';
 import financial from '../assets/financial.png';
-import noap1 from '../assets/noap-screenshots1.png';
-import noap2 from '../assets/noap-screenshots2.png';
-import noap3 from '../assets/noap-screenshots3.png';
-import noap4 from '../assets/noap-screenshots4.png';
+import noap from '../assets/noap_sign_in.png';
+import noap1 from '../assets/noap1.png';
+import noap2 from '../assets/noap2.png';
+import noap3 from '../assets/noap3.png';
+import noap4 from '../assets/noap4.png';
+import noap5 from '../assets/noap5.png';
+import noap6 from '../assets/noap6.png';
+import noap7 from '../assets/noap7.png';
+import noap8 from '../assets/noap8.png';
+import noap9 from '../assets/noap9.png';
 import shopperMobile from '../assets/shopper-mobile.png';
 
 export default [
   {
     "name": "Noap",
     "description": "Noap is a notes application heavily inspired by the Evernote app. It's being built using the MERN stack, (with typescript), Lexical editor and a lot of different packages, like: React Query, React Hook Form and Framer Motion. For more information about the tech behind Noap, please have a look at the repository!",
-    "image": [notes, noap1, noap2, noap3, noap4],
+    "image": [noap, noap1, noap2, noap3, noap4, noap5, noap6, noap7, noap8, noap9],
     "github": "https://github.com/br0k3nb/Noap-typescript",
     "link": "https://noap.vercel.app/",
     "underConstruction": false,

@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import { HiArrowDown } from "react-icons/hi"
 import { motion } from 'framer-motion';
 
+import SvgLoader from './Loader';
 import me from '../assets/me2.jpg';
 
 export default function Hero() {
+    const [imageIsLoading, setImageIsLoading] = useState(true);
+    
     const [text] = useTypewriter({
         words: [ "Hi, my name is Rodrigo!", "A guy who loves ☕", "<But loves more to code />" ],
         loop: true,
@@ -24,13 +28,22 @@ export default function Hero() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2 }}
                     className="md:mt-2 md:px-10"
-                >
+                    >
                     <div className="absolute rounded-full object-cover shadow-2xl shadow-teal-600/60 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
+                    {imageIsLoading && (
+                        <div className="absolute md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse">
+                            <div className="relative text-gray-100 z-10 my-auto h-12 mx-auto w-40 bg-[#22857d] border border-gray-300 py-3 rounded-full top-32">
+                                <SvgLoader options={{ 
+                                    showLoadingText: true 
+                                }} />
+                            </div>
+                        </div>
+                    )}
                     <img
                         src={me}
-                        alt="Profile picture"
                         width={250}
                         height={200}
+                        onLoad={() => setImageIsLoading(false)}
                         className="rounded-full object-cover md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48"
                     />
                 </motion.div>

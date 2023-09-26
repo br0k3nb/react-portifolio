@@ -7,10 +7,10 @@ import SvgLoader from "../Loader";
 import { Container } from "./style";
 
 export default function Projects() {
-  const [ imageToShow, setImageToShow ] = useState(0);
-  const [ direction, setDirection ] = useState(0);
-  const [ imageIsLoading, setImageIsLoading ] = useState(false);
-  const [ deviceScreenSize, setDeviceScreeSize ] = useState(window.innerWidth);
+  const [imageToShow, setImageToShow] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [imageIsLoading, setImageIsLoading] = useState(false);
+  const [deviceScreenSize, setDeviceScreeSize] = useState(window.innerWidth);
 
   addEventListener("resize", () => setTimeout(() => setDeviceScreeSize(window.innerWidth), 500));
 
@@ -83,7 +83,9 @@ export default function Projects() {
                   transition={{ type: "spring", stiffness: 80, damping: 10 }} 
                   className="xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto"
                 >
-                    <Container className="block shadow-2xl shadow-white hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600">
+                    <Container 
+                      className="block shadow-2xl shadow-white hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600"
+                    >
                       <div className="relative pb-64 overflow-hidden xxs:pb-52">
                         {underConstruction ? (
                           <div className="absolute inset-0">
@@ -94,7 +96,11 @@ export default function Projects() {
                                 </p>
                                 <span className="text-6xl xxs:text-4xl xxs:py-4 sm:text-5xl sm:mt-2">👷‍♂️</span>
                               </div>
-                              <img className="object-cover blur-[1px] z-0 !h-[400px] w-full" src={image[0]} alt="Project image" />
+                              <img 
+                                className="object-cover blur-[1px] z-0 !h-[400px] w-full" 
+                                src={image[0]} 
+                                alt="Project image" 
+                              />
                             </div>
                           </div>
                         ) : (
@@ -102,14 +108,17 @@ export default function Projects() {
                             <BsArrowRight 
                               onClick={() => handleRightClick(image)} 
                               size={35}
-                              className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto right-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
+                              className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto right-1 cursor-pointer bg-teal-600 px-2 py-1 rounded-full"
                             />
                             <BsArrowLeft
                               onClick={() => handleLeftClick(image)}
                               size={35} 
-                              className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto  left-1 cursor-pointer bg-gray-900 px-2 py-1 rounded-full"
+                              className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto  left-1 cursor-pointer bg-teal-600 px-2 py-1 rounded-full"
                             />
-                            <AnimatePresence initial={false} custom={direction}>
+                            <AnimatePresence 
+                              initial={false} 
+                              custom={direction}
+                            >
                               <motion.img
                                 exit="exit"
                                 animate="animate"
@@ -123,8 +132,12 @@ export default function Projects() {
                               />
                             </AnimatePresence>
                             {imageIsLoading && ( 
-                              <div className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto h-12 left-0 right-0 mx-auto w-40 bg-gray-900 py-3 rounded-full">
-                                  <SvgLoader options={{ showLoadingText: true }} />
+                              <div className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto h-12 left-0 right-0 mx-auto w-40 bg-teal-600 border border-gray-300 py-3 rounded-full">
+                                  <SvgLoader 
+                                    options={{ 
+                                      showLoadingText: true 
+                                    }} 
+                                  />
                               </div>
                             )}
                           </>
@@ -139,7 +152,17 @@ export default function Projects() {
                       <div className="p-4">
                         <div className="px-2">
                           <div className="mb-8 flex flex-row space-x-2">
-                            {codeBase?.map((icons, idx) => <img draggable={false} src={icons} alt="" key={idx} className='h-[30px] w-[30px] xxs:w-[30px] xxs:h-[35px]'/> )}
+                            {codeBase?.map((icons, idx) => {
+                              return (
+                                <img 
+                                  key={idx} 
+                                  className='h-[30px] w-[30px] xxs:w-[30px] xxs:h-[35px]'
+                                  draggable={false} 
+                                  src={icons} 
+                                  alt="" 
+                                />
+                              )
+                            })}
                           </div>
                           <div className="flex flex-row align-bottom space-x-4 mb-2">
                             <a 
@@ -147,14 +170,18 @@ export default function Projects() {
                               href={github ? github as string : '#'}
                               className={`${!link && 'blur-[1px]'}`}
                             >
-                              <BsGithub className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}/>
+                              <BsGithub 
+                                className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}
+                              />
                             </a>
                             <a 
                               draggable={false}
                               href={link ? link as string : '#'}
                               className={`${!link && 'blur-[1px]'}`}
                             >
-                              <BsArrowUpRightSquare className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}/>
+                              <BsArrowUpRightSquare 
+                                className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}
+                              />
                             </a>
                           </div> 
                         </div>
