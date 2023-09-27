@@ -90,7 +90,7 @@ export default function Projects() {
                         {underConstruction ? (
                           <div className="absolute inset-0">
                             <div className="relative flex items-center">
-                              <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-28 xxs:top-16'>
+                              <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-[100px] xxs:top-16'>
                                 <p className="text-gray-100 text-2xl uppercase py-5 xxs:py-5 xxs:mt-2 xxs:text-sm sm:text-lg sm:py-4 lg:tracking-wide text-center">
                                     Under Construction
                                 </p>

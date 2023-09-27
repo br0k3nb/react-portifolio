@@ -32,7 +32,7 @@ export default function Hero() {
                     <div className="absolute rounded-full object-cover shadow-2xl shadow-teal-600/60 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
                     {imageIsLoading && (
                         <div className="absolute md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse">
-                            <div className="relative text-gray-100 z-10 my-auto h-12 mx-auto w-40 bg-[#22857d] border border-gray-300 py-3 rounded-full top-32">
+                            <div className="relative text-gray-100 z-10 my-auto h-12 mx-auto w-40 bg-[#22857d] border border-gray-300 py-3 rounded-full top-32 xxs:top-[70px]">
                                 <SvgLoader options={{ 
                                     showLoadingText: true 
                                 }} />
