@@ -7,6 +7,8 @@ import tools from '../../datasets/tools.json';
 import learning from '../../datasets/learning.json';
 
 import { Container } from './style';
+import { ThemeCtx } from '../../context/ThemeContex';
+import { useContext } from 'react';
 
 export default function About() {
     return (
@@ -82,19 +84,19 @@ export default function About() {
                         <h1 className="text-3xl mb-4 xxs:text-2xl">My Skills 🤓</h1>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                        {skills.map((item, idx) => ( <CardBase key={idx} idx={idx} item={item}/> ))}
+                        {skills.map((item, idx) => <CardBase key={idx} idx={idx} item={item}/> )}
                     </div>
                     <div className='flex justify-center mt-8'>
                         <p className='text-md tracking-widest uppercase'>tools</p>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-2">
-                        {tools.map((item, idx) => ( <CardBase key={idx} idx={idx} item={item}/> ))}
+                        {tools.map((item, idx) => <CardBase key={idx} idx={idx} item={item}/> )}
                     </div>
                     <div className='flex justify-center mt-8'>
                         <p className='text-md tracking-widest uppercase'> learning / to learn</p>
                     </div>
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-4">
-                        {learning.map((item, idx) => ( <CardBase key={idx} idx={idx} item={item}/> ))}
+                        {learning.map((item, idx) => <CardBase key={idx} idx={idx} item={item}/> )}
                     </div>
                 </motion.div>
             </div>
@@ -102,7 +104,17 @@ export default function About() {
     )
 }
 
-export function CardBase({idx, item}: any) {
+type CardBaseType = {
+    idx: number;
+    item: {
+        skill: string;
+        img: string;
+    }
+};
+
+export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
+    const { theme } = useContext(ThemeCtx) as any;
+
     return (
         <motion.div
             whileHover={{ scale: 1.1 }}
@@ -111,10 +123,18 @@ export function CardBase({idx, item}: any) {
         >
             <Container className='cards overflow-hidden'>
                 <p className='text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
-                    {item.skill}
+                    {skill}
                 </p>
                 <span className='!bg-inherit h-25 w-25 mx-auto justify-center flex pb-2'>
-                    <img draggable={false} width={50} height={50} src={item.img} />
+                    <img 
+                        width={50}
+                        height={50}
+                        src={img}
+                        draggable={false}
+                        className={`
+                            ${(theme === 'dark' && (img.includes("express") || img.includes("next"))) && "invert-color"}
+                        `}
+                    />
                 </span>
             </Container>
         </motion.div>
