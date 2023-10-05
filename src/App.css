@@ -50,6 +50,10 @@
   }
 }
 
+.invert-color {
+  filter: invert(100%) sepia(36%) saturate(1130%) hue-rotate(177deg) brightness(88%) contrast(95%) !important;
+}
+
 * {
   font-family: 'Ubuntu';
   -webkit-tap-highlight-color: rgba(0,0,0,0);

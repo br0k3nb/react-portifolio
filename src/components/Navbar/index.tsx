@@ -7,10 +7,10 @@ import { ThemeCtx } from '../../context/ThemeContex';
 
 export default function Navbar() {
     const [navbar, setNavbar] = useState(false);
-    const themeCtx = useContext(ThemeCtx);
+    const { theme, setTheme } = useContext(ThemeCtx) as any;
 
     const handleClickTheme = (theme: string) => {
-        themeCtx?.setTheme(theme);
+        setTheme(theme);
         localStorage.setItem("theme", theme);
     }
 
@@ -50,7 +50,7 @@ export default function Navbar() {
 
                         <button className={`${!navbar ? 'mt-10' : "flex flex-row"}`}>
                             <p className='my-auto pr-2 uppercase text-sm tracking-widest cursor-default hidden xxs:flex'>Theme</p>
-                            {themeCtx?.theme === "dark" ? (
+                            {theme === "dark" ? (
                                 <RiSunLine 
                                     onClick={() => handleClickTheme("light")}
                                     size={38} 
