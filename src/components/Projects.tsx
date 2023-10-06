@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BsGithub, BsArrowUpRightSquare, BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 
-import projects from "../../datasets/projects";
-import SvgLoader from "../Loader";
-import { Container } from "./style";
-import { ThemeCtx } from "../../context/ThemeContex";
+import SvgLoader from "./Loader";
+import projects from "../datasets/projects";
+import useTheme from "../hooks/useTheme";
 
 export default function Projects() {
   const [direction, setDirection] = useState(0);
@@ -14,7 +13,7 @@ export default function Projects() {
   const [imageClicked, setImageClicked] = useState<number | null>(null);
   const [deviceScreenSize, setDeviceScreeSize] = useState(window.innerWidth);
 
-  const { theme } = useContext(ThemeCtx) as any;
+  const { theme } = useTheme();
 
   addEventListener("resize", () => setTimeout(() => setDeviceScreeSize(window.innerWidth), 500));
 
@@ -91,8 +90,15 @@ export default function Projects() {
                   transition={{ type: "spring", stiffness: 80, damping: 10 }} 
                   className="xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto"
                 >
-                    <Container 
-                      className="block shadow-2xl shadow-white hover:shadow-teal-900/50 bg-stone-800 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out border border-gray-600 xxs:hover:border-gray-600"
+                    <div 
+                      className={`
+                        block shadow-2xl hover:shadow-teal-900/50 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out
+                        ${theme === "dark" ? (
+                          "bg-[#1C1917] text-[#F5F5F5] shadow-[#111827] border border-[#4b5563]" 
+                        ) : (
+                          "bg-[#eaeaea] text-[#18181b] shadow-[#111827] border border-[#050505]"
+                        )}
+                      `}
                     >
                       <div className="relative pb-64 overflow-hidden xxs:pb-52">
                         {underConstruction ? (
@@ -206,7 +212,7 @@ export default function Projects() {
                           </div> 
                         </div>
                       </div>
-                    </Container>
+                    </div>
                   </motion.div>
                 )
               })}

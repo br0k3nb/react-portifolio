@@ -1,14 +1,11 @@
 import { motion } from 'framer-motion';
 
-import about from '../../assets/about-me.png';
+import about from '../assets/about-me.png';
+import skills from '../datasets/skills.json';
+import tools from '../datasets/tools.json';
+import learning from '../datasets/learning.json';
 
-import skills from '../../datasets/skills.json';
-import tools from '../../datasets/tools.json';
-import learning from '../../datasets/learning.json';
-
-import { Container } from './style';
-import { ThemeCtx } from '../../context/ThemeContex';
-import { useContext } from 'react';
+import useTheme from '../hooks/useTheme';
 
 export default function About() {
     return (
@@ -113,7 +110,7 @@ type CardBaseType = {
 };
 
 export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
-    const { theme } = useContext(ThemeCtx) as any;
+    const { theme } = useTheme();
 
     return (
         <motion.div
@@ -121,7 +118,12 @@ export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
             transition={{ type: "spring", stiffness: 200, damping: 10 }}
             key={idx}
         >
-            <Container className='cards overflow-hidden'>
+            <div 
+                className={`
+                    cards overflow-hidden
+                    ${theme === 'dark' ? "bg-[#1C1917] text-[#F5F5F5]" : "bg-[#eaeaea] text-[#18181b]"}
+                `}
+            >
                 <p className='text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
                     {skill}
                 </p>
@@ -136,7 +138,7 @@ export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
                         `}
                     />
                 </span>
-            </Container>
+            </div>
         </motion.div>
     )
 }

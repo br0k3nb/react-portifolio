@@ -7,6 +7,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     screens: {  
       'xxs': {'max': '639px', "min": "0px"},
