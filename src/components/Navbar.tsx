@@ -1,21 +1,30 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { RiMoonFill, RiSunLine } from 'react-icons/ri';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
 
-import { Container } from './styles';
-import { ThemeCtx } from '../../context/ThemeContex';
+import useTheme from '../hooks/useTheme';
 
 export default function Navbar() {
     const [navbar, setNavbar] = useState(false);
-    const { theme, setTheme } = useContext(ThemeCtx) as any;
+    const { theme, setTheme } = useTheme();
 
     const handleClickTheme = (theme: string) => {
-        setTheme(theme);
+        const htmlElementHasDarkClass = document.documentElement.classList.contains("dark");
+        
+        if(theme !== 'dark' && htmlElementHasDarkClass) document.documentElement.classList.remove("dark");
+        else document.documentElement.classList.add("dark");
+
         localStorage.setItem("theme", theme);
+        setTheme(theme);
     }
 
     return (
-        <Container className='w-full mx-auto px-8 border-b border-stone-600 shadow fixed top-0 sm:px-16 z-50 justify-between md:flex md:items-center'>
+        <div 
+            className={`
+                w-full mx-auto px-8 border-b border-stone-600 shadow fixed top-0 sm:px-16 z-50 justify-between md:flex md:items-center
+                ${theme === 'dark' ? "bg-[#1C1917] text-[#F5F5F5]" : "bg-[#eaeaea] text-[#18181b]"}
+            `}
+        >
             <div>
                 <div className="flex items-center justify-between py-3">
                     <div className="md:py-2 mb:block">
@@ -68,6 +77,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-        </Container>
+        </div>
     )
 }

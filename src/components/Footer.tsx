@@ -1,9 +1,16 @@
 import { AiOutlineGithub } from "react-icons/ai";
-import { Container } from "./styles";
+import useTheme from "../hooks/useTheme";
 
 export default function Footer() {
+    const { theme } = useTheme();
+
     return (
-        <Container className="min-w-6xl">
+        <div 
+            className={`
+                min-w-6xl
+                ${theme === 'dark' ? "bg-[#1C1917] text-[#F5F5F5]" : "bg-[#eaeaea] text-[#18181b]"}
+            `}
+        >
             <hr className="w-full h-0.5 mx-auto mt-8 bg-stone-600 border-0" />
             <div className="py-4 flex flex-col justify-center">
                 <div className="flex flex-row items-center justify-center space-x-1">
@@ -28,6 +35,6 @@ export default function Footer() {
                     </a>
                 </div>
             </div>
-        </Container>
+        </div>
     )
 }
