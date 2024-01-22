@@ -19,7 +19,6 @@ export default function About() {
                 About Me
                 <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"/>
             </h1>
-
             <div className="flex flex-col space-y-10 mt-16 xxs:mt-8 items-stretch justify-center md:space-x-15 sm:space-x-12 md:space-y-0 md:p-8 md:flex-row md:text-left xxs:p-7 sm:px-10">
                 <motion.div
                     initial={{ x: -200, opacity: 0 }}
@@ -31,7 +30,7 @@ export default function About() {
                     <h1 className="text-center text-3xl mb-6 md:text-left xxs:text-2xl">
                         Get to know me! 👋
                     </h1>
-                    <p className="text-lg xxs:text-sm">
+                    <p className="text-base xxs:text-sm">
                         Hi, my name is Rodrigo! and i'm a{" "}
                         <span className="font-bold">{" highly ambitious, "}</span>
                         <span className="font-bold">{" self-motivated "}</span> and
@@ -39,18 +38,18 @@ export default function About() {
                         based in Pernambuco, Brazil.
                     </p>
                     <br />
-                    <p className="text-lg xxs:text-sm">
+                    <p className="text-base xxs:text-sm">
                         I'm studying Computer Engineering at Uninassau since 2022 and have been
                         working in the field ever since.
                     </p>
                     <br />
-                    <p className="text-lg xxs:text-sm">
+                    <p className="text-base xxs:text-sm">
                         I have a wide range of hobbies and passions that keep me busy.
                         From reading, playing games, to traveling, i'm always seeking
                         new experiences and love to keep myself engaged and learning new things.
                     </p>
                     <br />
-                    <p className="text-lg xxs:text-sm">
+                    <p className="text-base xxs:text-sm">
                         I believe that you should{" "}
                         <span className="font-bold text-teal-500"> never stop growing </span>{" "}
                         and that's what i strive to do, i have a passion for
@@ -62,14 +61,12 @@ export default function About() {
                         src={about}
                         width={325}
                         height={325}
-                        className="pt-10 mx-auto object-cover md:w-[700px] md:h-[600px] lg:w-[780px] lg:h-[680px]  sm:w-[500px] sm:h-[400px]"
+                        className="pt-10 mx-auto object-cover md:w-[700px] md:h-[600px] lg:w-[780px] lg:h-[680px] sm:w-[500px] sm:h-[400px]"
                     />
                 </motion.div>
-
                 <div className='hidden lg:flex'>
                     <hr className="w-1 h-[100%] shadow-sm shadow-teal-900/30 bg-stone-700/30 border-0 rounded"/>
                 </div>
-
                 <motion.div
                     initial={{ x: 200, opacity: 0 }}
                     transition={{ duration: 1.4 }}
@@ -118,12 +115,7 @@ export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
             transition={{ type: "spring", stiffness: 200, damping: 10 }}
             key={idx}
         >
-            <div 
-                className={`
-                    cards overflow-hidden
-                    ${theme === 'dark' ? "bg-[#1C1917] text-[#F5F5F5]" : "bg-[#eaeaea] text-[#18181b]"}
-                `}
-            >
+            <div className="cards overflow-hidden shadow-md hover:shadow-xl hover:shadow-gray-600 dark:bg-[#000000] dark:text-[#F5F5F5] bg-[#eaeaea] text-[#18181b]">
                 <p className='text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
                     {skill}
                 </p>

@@ -28,7 +28,7 @@ export default function Hero() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2 }}
                     className="md:mt-2 md:px-10"
-                    >
+                >
                     <div className="absolute rounded-full object-cover shadow-2xl shadow-teal-600/60 md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse" />
                     {imageIsLoading && (
                         <div className="absolute md:h-80 md:w-80 sm:h-72 sm:w-72 xxs:h-48 xxs:w-48 animate-pulse">
@@ -66,7 +66,7 @@ export default function Hero() {
                         makes life easier and more meaningful.
                     </p>
                     <div className="flex justify-center lg:justify-start">
-                        <a href="#projects" className="text-gray-100 uppercase text-[15px]  hover:shadow-teal-900 bg-teal-600 hover:bg-teal-700 transition-all ease-in-out duration-300 tracking-widest px-6 py-3 rounded-full shadow-lg shadow-gray-800">
+                        <a href="#projects" className="text-gray-100 uppercase text-[15px] bg-teal-600 hover:bg-teal-700 transition-all ease-in-out duration-300 tracking-widest px-6 py-3 rounded-full">
                             Projects
                         </a>
                     </div>

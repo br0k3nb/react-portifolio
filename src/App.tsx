@@ -25,7 +25,7 @@ export function AppSections() {
     <div 
       className={`
         h-screen overflow-scroll overflow-x-hidden z-0 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-teal-600
-        ${theme === 'dark' ? "bg-[#333333] text-[#F5F5F5]" : "bg-[#e5e5e5] text-[#18181b]"}
+        ${theme === 'dark' ? "bg-[#232424] text-[#F5F5F5]" : "bg-[#e5e5e5] text-[#18181b]"}
       `}
     >
       <Navbar />

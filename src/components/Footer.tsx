@@ -8,7 +8,7 @@ export default function Footer() {
         <div 
             className={`
                 min-w-6xl
-                ${theme === 'dark' ? "bg-[#1C1917] text-[#F5F5F5]" : "bg-[#eaeaea] text-[#18181b]"}
+                ${theme === 'dark' ? "bg-[#000000] text-[#F5F5F5]" : "bg-[#eaeaea] text-[#18181b]"}
             `}
         >
             <hr className="w-full h-0.5 mx-auto mt-8 bg-stone-600 border-0" />
