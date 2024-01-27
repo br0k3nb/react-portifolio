@@ -1,22 +1,27 @@
 import { useState } from "react";
 import Compressor from "compressorjs";
+import { useQuery } from "react-query";
 import { FaPlusCircle } from "react-icons/fa";
-import { FieldValues, useForm } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
+import { FieldValues, useForm, useFieldArray } from "react-hook-form";
 import imageCompression from 'browser-image-compression';
 import { BsGithub, BsArrowUpRightSquare, BsArrowRight, BsArrowLeft } from "react-icons/bs";
+import { MdKeyboardDoubleArrowRight, MdKeyboardDoubleArrowLeft } from 'react-icons/md';
+// import { Link } from "react-router-dom";
 
-import Modal from "./Modal";
 import SvgLoader from "./Loader";
 import api from "../services/api";
 import { toastAlert } from "./Alert";
 import useTheme from "../hooks/useTheme";
-import projects from "../datasets/projects";
+import useDebounce from "../hooks/useDebounce";
+import AddProjectModal from "./Modals/AddProjectModal";
 import useUpdateViewport from "../hooks/useUpdateViewport";
 
 export default function Projects() {
   const isLocalhost = location.hostname === "localhost";
-
+  
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
   const [direction, setDirection] = useState(0);
   const [imageToShow, setImageToShow] = useState(0);
   const [openAddModal, setOpenAddModal] = useState(false);
@@ -25,14 +30,18 @@ export default function Projects() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [projectImageLoader, setProjectImageLoader] = useState('');
   const [imageClicked, setImageClicked] = useState<number | null>(null);
-  const [projectImage, SetProjectImage] = useState<null | string>(null);
   const [deviceScreenSize, setDeviceScreeSize] = useState({ width: window.innerWidth });
+  const [pageStatus, setPageStatus] = useState({ hasNext: false, hasPrev: false, totalPages: 0 });
   
   const { theme } = useTheme();
   useUpdateViewport(setDeviceScreeSize, 500);
-  
+  const delayedSearch = useDebounce(search, 500);
+
   const { handleSubmit, register, reset, formState, clearErrors } = useForm();
   const { errors } = formState;
+
+  const { control } = useForm<Projects>();
+  const { append, replace, remove, fields } = useFieldArray({ control, name: "projects" });
   
   const variants = {
     initial: (direction: number) => {
@@ -102,7 +111,19 @@ export default function Projects() {
                 reader.onload = async function () {
                   if (typeof reader.result === "string") {
                     setProjectImageLoader('');
-                    SetProjectImage(reader.result);
+
+                    await api.post("/projects/add", {
+                      name,
+                      description,
+                      githubLink,
+                      image: reader.result,
+                      projectLink,
+                      stack: filteredStack,
+                      stackIcons: filteredStackIcons
+                    });
+
+                    fetchProjects();
+                    toastAlert({ icon: "success", title: "Project added!", timer: 2000 });
                   }
                   return "";
                 };
@@ -119,23 +140,47 @@ export default function Projects() {
         toastAlert({ icon: "error", title: "Image too large!", timer: 3000 });
         return;
       }
-
-      await api.post("/projects/add", {
-        name,
-        description,
-        githubLink,
-        image: projectImage,
-        projectLink,
-        stack: filteredStack,
-        stackIcons: filteredStackIcons
-      });
-
-      toastAlert({ icon: "success", title: "Project added!", timer: 2000 });
     } catch (err: any) {
       console.log(err);
       toastAlert({ icon: "error", title: err.message, timer: 3000 });
     }
   };
+
+  const fetchProjects = async () => {
+    try {
+      console.log(page);
+      const {
+        data: { 
+          projects: {
+            docs,
+            hasNextPage,
+            hasPrevPage,
+            limit,
+            page: currentPage,
+            totalPages
+          }
+        } 
+      } = await api.get("/projects", {
+        params: {
+          page,
+          limit: 10,
+          search: delayedSearch
+        }
+      });
+
+      setPageStatus({ hasNext: hasNextPage, hasPrev: hasPrevPage, totalPages });
+      replace(docs);
+      console.log(docs);
+    } catch (err: any) {
+      console.log(err);
+      toastAlert({ icon: "error", title: err.message, timer: 3000 });
+    }
+  };
+
+  const { isFetching } = useQuery(["projects", delayedSearch, page], fetchProjects, { 
+    refetchInterval: 300000,
+    refetchOnWindowFocus: false
+  });
 
   return (
     <motion.div
@@ -144,109 +189,18 @@ export default function Projects() {
       transition={{ duration: 1.2 }}      
       className="py-32 px-20 xxs:!p-0 lg:px-28 mb-28"
     >
-      <Modal
-        open={openAddModal}
-        setOpen={setOpenAddModal}
-        title="Add new project"
-        options={{
-          titleWrapperClassName: "!px-6",
-          titleCustomClassName: "xxs:!text-[20px]",
-          modalWrapperClassName: "px-0 w-[30rem] xxs:!w-[20rem]",
-          onClose: () => {
-            setOpenAddModal(false);
-            clearErrors();
-            reset();
-          }
-        }}
-      >
-        <form noValidate onSubmit={handleSubmit(handleAddProject)}>
-          <div className="px-6 mt-5 flex flex-col space-y-3">
-            <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.name?.message as string}
-            </p>
-            <input 
-              type="text"
-              placeholder="Name"
-              className="border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] w-full placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none"
-              {...register("name", {
-                required: "Name is required",
-              })}
-            />
-            <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.description?.message as string}
-            </p>
-            <input 
-              type="text"
-              placeholder="Description"
-              className="border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] w-full placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none"
-              {...register("description", {
-                required: "Description is required",
-              })}
-            />
-              <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.githubLink?.message as string}
-            </p>
-            <input 
-              type="url"
-              placeholder="Github link"
-              className="border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] w-full placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none"
-              {...register("githubLink", {
-                required: "Github link is required",
-              })}
-            />
-            <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.projectLink?.message as string}
-            </p>
-            <input 
-              type="url"
-              placeholder="Project link"
-              className="border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] w-full placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none"
-              {...register("projectLink", {
-                required: "Project link is required",
-              })}
-            />
-            <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.stack?.message as string}
-            </p>
-            <input 
-              type="text"
-              placeholder="Stack"
-              className="border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] w-full placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none"
-              {...register("stack", {
-                required: "Stack is required",
-              })}
-            />
-            <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.stackIcons?.message as string}
-            </p>
-            <input 
-              type="text"
-              placeholder="Stack Icons Url"
-              className="border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] w-full placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none"
-              {...register("stackIcons", {
-                required: "Stack Icons Url is required",
-              })}
-            />
-            <p className="text-red-500 ml-1 uppercase text-xs tracking-widest" hidden={!Object.keys(errors).length}>
-              {errors.image?.message as string}
-            </p>
-            <input  
-              type="file"
-              className="bg-[#dbdbdb] dark:bg-[#181818] dark:hover:!bg-[#222222] hover:!bg-[#cecece] text-gray-900 border border-stone-400 dark:border-[#404040] dark:text-gray-300 w-full file-input file-input-md file:text-gray-200 file:bg-gray-900 hover:file:bg-black file:font-normal file:text-xs uppercase tracking-widest text-xs rounded-full pr-12"
-              {...register("image", {
-                required: "Project image is required"
-              })}
-            />
-          </div>
-          <hr className="my-5 bg-gray-600 h-[0.06rem] border-0" />
-          <div className="mx-6">
-            <button className="w-full bg-green-700 text-white rounded-full py-2 uppercase tracking-widest text-sm hover:bg-green-800 transition-colors duration-300 ease-in-out">
-              {projectImageLoader === "compressing" ? "compressing..." : projectImageLoader === "loading" ? "loading" : "save"}
-            </button>
-          </div>
-        </form>
-      </Modal>
-      <h1 className="text-center font-bold text-4xl pb-14 xxs:pb-5">
+     <AddProjectModal 
+      clearErrors={clearErrors}
+      errors={errors}
+      handleAddProject={handleAddProject}
+      handleSubmit={handleSubmit}
+      openAddModal={openAddModal}
+      setOpenAddModal={setOpenAddModal}
+      projectImageLoader={projectImageLoader}
+      register={register}
+      reset={reset}
+     />
+      <h1 className="text-center font-bold text-4xl pb-10 xxs:pb-5">
         <div className="flex flex-row justify-center items-center">
           Projects
           {isLocalhost && (
@@ -259,20 +213,73 @@ export default function Projects() {
         </div>
         <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded" />
       </h1>
+      <div className="flex flex-col space-y-4 justify-center items-center mb-14">
+        <input
+          className=" border transition duration-300 dark:bg-[#232424] dark:border-gray-600 dark:text-white bg-gray-200 border-gray-600 text-gray-900 text-[17px] lg:w-[37%] xxs:w-[70%] sm:w-[70%] md:w-[50%] placeholder-gray-400 rounded-[30px] h-[45px] px-5 focus:outline-none dark:hover:border-gray-400"
+          onChange={({currentTarget}) => setSearch(currentTarget.value)}
+          placeholder="Search..."
+          value={search}
+        />
+        <div className="bg-transparent border border-transparent">
+                <div className="btn-group bg-transparent flex !justify-between px-6">
+                    {!pageStatus.hasPrev ? (
+                        <button className="btn !border-transparent !bg-inherit text-gray-500 cursor-not-allowed"> 
+                            <MdKeyboardDoubleArrowLeft size={18} className="cursor-not-allowed" />
+                        </button>
+                    ) : (
+                        <button
+                          className="btn !bg-transparent !border-transparent text-lg transition-all duration-300 ease-in-out hover:!text-2xl"
+                          onClick={() => setPage(page - 1)}
+                          disabled={isFetching}
+                        > 
+                            <MdKeyboardDoubleArrowLeft className="text-gray-900 dark:text-gray-300" />
+                        </button>
+                    )}
+                    <p className="bg-transparent dark:text-gray-300 uppercase tracking-widest text-sm cursor-default my-auto mx-10">
+                        Page {page}
+                    </p>
+                    {!pageStatus.hasNext ? (
+                        <button className="btn !border-transparent !bg-inherit text-gray-500 cursor-not-allowed">
+                            <MdKeyboardDoubleArrowRight 
+                              className="cursor-not-allowed" 
+                              size={18} 
+                            />
+                        </button>
+                    ) : (
+                        <button 
+                          className="btn !bg-transparent !border-transparent text-lg transition-all duration-300 ease-in-out hover:!text-2xl"
+                          onClick={() => setPage(page + 1)}
+                          disabled={isFetching}
+                        > 
+                          <MdKeyboardDoubleArrowRight className="text-gray-900 dark:text-gray-300" />
+                        </button>
+                    )}
+                </div>
+            </div>
+      </div>
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.2 }}
           viewport={{ once: true }}
-        >
+          >
           <div className="flex justify-center flex-wrap xxs:flex-col">
-            {projects.map((project, index: number) => {
-              const { images, underConstruction, description, name, codeBase, github, link } = project;
+            {fields.map((project, index: number) => {
+              const { 
+                image,
+                generalInfo: { 
+                  name,
+                  description,
+                  githubLink,
+                  projectLink
+                },
+                stackInfo: { icons } 
+              } = project;
 
               return (
                 <motion.div
                   key={index}
-                  initial={underConstruction ? { opacity: 0.80 } : { opacity: 1 }}
+                  initial={false ? { opacity: 0.80 } : { opacity: 1 }}
                   whileHover={deviceScreenSize.width > 640 ? { scale: 1.04, opacity: 1 } : undefined}
                   transition={{ type: "spring", stiffness: 80, damping: 10 }} 
                   className="xxs:!w-[78%] xxs:max-w-[400px] sm:w-[440px] md:w-[470px] lg:w-1/2 xl:w-[490px] p-7 xxs:py-7 xxs:px-0 xxs:mx-auto"
@@ -288,7 +295,7 @@ export default function Projects() {
                       `}
                     >
                       <div className="relative pb-64 overflow-hidden xxs:pb-52">
-                        {underConstruction ? (
+                        {false ? (
                           <div className="absolute inset-0">
                             <div className="relative flex items-center">
                               <div className='z-10 absolute w-full bg-teal-600/90 flex flex-row justify-evenly xxs:justify-center rounded-sm shadow-2xl shadow-slate-900 top-[100px] xxs:top-16'>
@@ -299,21 +306,21 @@ export default function Projects() {
                               </div>
                               <img 
                                 className="object-cover blur-[1px] z-0 !h-[400px] w-full" 
-                                src={images[0]} 
+                                src={image} 
                                 alt="Project image" 
                               />
                             </div>
                           </div>
-                        ) : (!underConstruction && images.length > 1) ? (
+                        ) : (false) ? (
                           <>
                             <BsArrowRight
                               className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto right-1 cursor-pointer bg-teal-600 px-2 py-1 rounded-full"
-                              onClick={() => handleRightClick(images, index)}
+                              // onClick={() => handleRightClick(images, index)}
                               size={35}
                             />
                             <BsArrowLeft
                               className="text-gray-100 z-10 absolute top-0 bottom-0 my-auto left-1 cursor-pointer bg-teal-600 px-2 py-1 rounded-full"
-                              onClick={() => handleLeftClick(images, index)}
+                              // onClick={() => handleLeftClick(images, index)}
                               size={35}
                             />
                             <AnimatePresence
@@ -329,8 +336,8 @@ export default function Projects() {
                                 custom={direction}
                                 variants={variants}
                                 onLoad={() => setImageIsLoading(false)}
-                                src={images[imageClicked === index ? imageToShow : 0]}
-                                key={images[imageClicked === index ? imageToShow : 0]}
+                                // src={images[imageClicked === index ? imageToShow : 0]}
+                                // key={images[imageClicked === index ? imageToShow : 0]}
                                 className="absolute inset-0 h-full w-full object-cover"
                               />
                             </AnimatePresence>
@@ -346,7 +353,7 @@ export default function Projects() {
                           <div className="absolute inset-0">
                             <img 
                               className="object-cover !h-full w-full"
-                              src={images[0]}
+                              src={image}
                               alt="Project image"
                               draggable={false}
                             />
@@ -363,7 +370,7 @@ export default function Projects() {
                       <div className="p-4 !pt-3">
                         <div className="px-2">
                           <div className="mb-8 flex flex-row space-x-2">
-                            {codeBase.map((icons, idx) => {
+                            {icons.map((icons, idx) => {
                               return (
                                 <img 
                                   key={idx}
@@ -381,20 +388,20 @@ export default function Projects() {
                           <div className="flex flex-row align-bottom space-x-4 mb-2">
                             <a 
                               draggable={false}
-                              href={github ? github as string : '#'}
-                              className={`${!link && 'blur-[1px]'}`}
+                              href={githubLink ? githubLink as string : '#'}
+                              className={`${!githubLink && 'blur-[1px]'}`}
                             >
                               <BsGithub 
-                                className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}
+                                className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!githubLink && '!cursor-not-allowed hover:translate-y-0'}`}
                               />
                             </a>
                             <a 
                               draggable={false}
-                              href={link ? link as string : '#'}
-                              className={`${!link && 'blur-[1px]'}`}
+                              href={projectLink ? projectLink as string : '#'}
+                              className={`${!projectLink && 'blur-[1px]'}`}
                             >
                               <BsArrowUpRightSquare 
-                                className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!link && '!cursor-not-allowed hover:translate-y-0'}`}
+                                className={`xxs:text-2xl text-3xl hover:-translate-y-1 transition-transform cursor-pointer ${!projectLink && '!cursor-not-allowed hover:translate-y-0'}`}
                               />
                             </a>
                           </div> 

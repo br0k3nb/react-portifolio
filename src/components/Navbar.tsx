@@ -16,6 +16,10 @@ export default function Navbar() {
 
         localStorage.setItem("theme", theme);
         setTheme(theme);
+    };
+    
+    const downloadCv = () => {
+      window.open("https://ld90qa.bn.files.1drv.com/y4mMgo1iCRYREfJq34s4akBnWcW3rONaMflLfsH-7WOm_GG91Ifuip0MY-FOhV53spqQrTQcycaSVnA82emn5L7MhSOKGzxMKWH3pcmcNucnf6s1uNKZpJD4jGQ3YVOkUjDDgaYe3evKwAD4wUGBe37RjwYgskEY15GthWf2OPE4Id_DmzWwqsGf6jM8zQuZbTi7g5mf_jw3wfsi0OZ3-rKQQ", '_blank')?.focus();
     }
 
     return (
@@ -70,6 +74,12 @@ export default function Navbar() {
                             onClick={() => setNavbar(!navbar)}
                         >
                             Projects
+                        </a>
+                        <a
+                            className="navbar-button-mobile md:links" 
+                            onClick={() => downloadCv()}
+                        >
+                            Download CV
                         </a>
                         <hr className='border-gray-600 md:hidden md:w-0'/>
                         <button className={`${!navbar ? 'mt-10' : "flex flex-row"}`}>

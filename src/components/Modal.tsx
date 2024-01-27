@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction, useEffect } from "react"
 
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { AiOutlineClose } from 'react-icons/ai';
-import useTheme from "../hooks/useTheme";
 
 type Props = {
     open: boolean;
@@ -53,9 +52,6 @@ export default function Modal({ children, open, setOpen, title, options }: Props
             removeEventListener("click", handleMouseClick);
         }
     }, []);
-
-    const { theme } = useTheme();
-    console.log(theme)
 
     return (
         <>
