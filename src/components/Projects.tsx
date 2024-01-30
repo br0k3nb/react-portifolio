@@ -9,6 +9,7 @@ import { MdKeyboardDoubleArrowRight, MdKeyboardDoubleArrowLeft, MdDelete, MdEdit
 import { BsGithub, BsArrowUpRightSquare, BsArrowRight, BsArrowLeft, BsThreeDotsVertical } from "react-icons/bs";
 
 import api from "../services/api";
+import SvgLoader from "./SvgLoader";
 import { toastAlert } from "./Alert";
 import useTheme from "../hooks/useTheme";
 import useDebounce from "../hooks/useDebounce";
@@ -404,7 +405,7 @@ export default function Projects() {
           viewport={{ once: true }}
           >
           <div className="flex justify-center flex-wrap xxs:flex-col">
-            {fields.map((project, index: number) => {
+            {!isFetching ? fields.map((project, index: number) => {
               const { 
                 _id,
                 images,
@@ -542,7 +543,16 @@ export default function Projects() {
                     </div>
                   </motion.div>
                 )
-              })}
+              }) : (
+                <div className="mt-16">
+                  <SvgLoader
+                    options={{
+                      showLoadingText: true,
+                      customLoadingText: "Loading projects..."
+                    }}
+                  />
+                </div>
+              )}
           </div>
        </motion.div > 
     </motion.div>
