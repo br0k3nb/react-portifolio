@@ -19,7 +19,7 @@ export default function Navbar() {
     };
     
     const downloadCv = () => {
-      window.open("https://ld90qa.bn.files.1drv.com/y4mMgo1iCRYREfJq34s4akBnWcW3rONaMflLfsH-7WOm_GG91Ifuip0MY-FOhV53spqQrTQcycaSVnA82emn5L7MhSOKGzxMKWH3pcmcNucnf6s1uNKZpJD4jGQ3YVOkUjDDgaYe3evKwAD4wUGBe37RjwYgskEY15GthWf2OPE4Id_DmzWwqsGf6jM8zQuZbTi7g5mf_jw3wfsi0OZ3-rKQQ", '_blank')?.focus();
+      window.open("https://yfmc4w.bn.files.1drv.com/y4mH-cC37NL7uwlooeSusgMY-nQmdBv5g0pQ0rSxLOV41papddsbCtJlM0Mq2PcXfBChed672KBJDyYe_GC8Bd96w8rni-XTDVq-UOjXDzclIZysV89SkUNqgsJUQ_m_1HEYxql6GSXDrufQDqStDB7glWecFQUKnPX_oM0uocjgCoqQxuVLAjLrcQVBfeXjfV1_2xvxHmBrqtLEZ0PE7C2RA", '_blank')?.focus();
     }
 
     return (
@@ -75,6 +75,7 @@ export default function Navbar() {
                         >
                             Projects
                         </a>
+                        <hr className='border-gray-600 md:hidden md:w-0'/> 
                         <a
                             className="navbar-button-mobile md:links" 
                             onClick={() => downloadCv()}
