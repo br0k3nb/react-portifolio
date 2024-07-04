@@ -19,7 +19,7 @@ export default function Navbar() {
     };
     
     const downloadCv = () => {
-      window.open("https://yfmc4w.bn.files.1drv.com/y4mH-cC37NL7uwlooeSusgMY-nQmdBv5g0pQ0rSxLOV41papddsbCtJlM0Mq2PcXfBChed672KBJDyYe_GC8Bd96w8rni-XTDVq-UOjXDzclIZysV89SkUNqgsJUQ_m_1HEYxql6GSXDrufQDqStDB7glWecFQUKnPX_oM0uocjgCoqQxuVLAjLrcQVBfeXjfV1_2xvxHmBrqtLEZ0PE7C2RA", '_blank')?.focus();
+      window.open("https://export-download.canva.com/PlFws/DAF7CXPlFws/28/0-1423570719534769250.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20240704%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240704T220700Z&X-Amz-Expires=8549&X-Amz-Signature=ad1e3edd3e811885889ee08e5c3ed193fceab820dca2fe4a97a099fe5cf96d56&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B filename*%3DUTF-8''Text.pdf&response-expires=Fri%2C 05 Jul 2024 00%3A29%3A29 GMT", '_blank')?.focus();
     }
 
     return (

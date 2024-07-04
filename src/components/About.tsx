@@ -110,12 +110,8 @@ export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
     const { theme } = useTheme();
 
     return (
-        <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 200, damping: 10 }}
-            key={idx}
-        >
-            <div className="cards overflow-hidden shadow-md hover:shadow-xl hover:shadow-gray-600 dark:bg-[#000000] dark:text-[#F5F5F5] bg-[#eaeaea] text-[#18181b]">
+        <div key={idx}>
+            <div className="cards overflow-hidden shadow-md dark:bg-[#000000] dark:text-[#F5F5F5] bg-[#eaeaea] text-[#18181b]">
                 <p className='text-xs p-1 mb-2 text-center uppercase tracking-widest' draggable={false}>
                     {skill}
                 </p>
@@ -131,6 +127,6 @@ export function CardBase({ idx, item: { img, skill } }: CardBaseType) {
                     />
                 </span>
             </div>
-        </motion.div>
+        </div>
     )
 }
